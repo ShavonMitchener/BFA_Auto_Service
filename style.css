@@ -4,23 +4,25 @@
 }
 
 body {
-  background: #f4f4f4;
+  background: #2d2d2d;  /* Dark grey background */
   margin: 0;
   padding: 10px;
+  color: #ffffff;  /* White text for body */
 }
 
 .invoice-container {
-  background: #fff;
+  background: #3a3a3a;  /* Slightly lighter dark grey for container */
   padding: 15px;
   margin: auto;
   max-width: 750px;
-  border: 1px solid #000;
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #666;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+  color: #ffffff;  /* White text inside container */
 }
 
 .header {
   text-align: center;
-  border-bottom: 2px solid #000;
+  border-bottom: 2px solid #666;
   margin-bottom: 10px;
   padding-bottom: 3px;
 }
@@ -28,11 +30,13 @@ body {
 .header h2 {
   margin: 0 0 3px 0;
   font-size: 1rem;
+  color: #ffffff;
 }
 
 .header p {
   margin: 0;
   font-size: 0.8rem;
+  color: #dddddd;
 }
 
 .logos {
@@ -60,21 +64,25 @@ body {
   font-weight: bold;
   display: block;
   margin-bottom: 2px;
+  color: #ffffff;
 }
 
 .info textarea, .info input {
   width: 95%;
-  border: 1px solid #aaa;
+  border: 1px solid #666;
   padding: 3px;
   font-size: 0.85rem;
   resize: vertical;
   font-family: 'Courier Prime', monospace;
+  background: #444;
+  color: #ffffff;
 }
 
 h3 {
   margin-top: 15px;
   margin-bottom: 5px;
   font-size: 0.9rem;
+  color: #ffffff;
 }
 
 table {
@@ -84,9 +92,15 @@ table {
 }
 
 th, td {
-  border: 2px solid #000;
+  border: 2px solid #666;
   padding: 4px;
   vertical-align: top;
+  color: #ffffff;
+}
+
+th {
+  background: #4a4a4a;
+  color: #ffffff;
 }
 
 #serviceTable th:first-child,
@@ -141,6 +155,7 @@ th, td {
   word-break: break-word;
   line-height: 1.3;
   background: transparent;
+  color: #ffffff;
 }
 
 .s-amt, .amt {
@@ -151,6 +166,7 @@ th, td {
   font-family: 'Courier Prime', monospace;
   font-size: 0.85rem;
   background: transparent;
+  color: #ffffff;
 }
 
 .qty, .unit-price {
@@ -161,6 +177,7 @@ th, td {
   font-family: 'Courier Prime', monospace;
   font-size: 0.85rem;
   background: transparent;
+  color: #ffffff;
 }
 
 .delete-btn {
@@ -184,26 +201,27 @@ th, td {
 
 textarea:focus, input:focus {
   outline: none;
-  background: #fafafa;
+  background: #4a4a4a;
 }
 
 button {
   padding: 4px 10px;
   margin: 3px;
   cursor: pointer;
-  border: 1px solid #000;
-  background: #f0f0f0;
+  border: 1px solid #666;
+  background: #4a4a4a;
   font-family: 'Courier Prime', monospace;
   font-size: 0.8rem;
+  color: #ffffff;
 }
 
 button:hover {
-  background: #ddd;
+  background: #555;
 }
 
 .totals {
   margin-top: 12px;
-  border-top: 2px solid #000;
+  border-top: 2px solid #666;
   padding-top: 8px;
   text-align: right;
   max-width: 320px;
@@ -214,55 +232,59 @@ button:hover {
   margin-bottom: 3px;
   font-size: 0.85rem;
   white-space: nowrap;
+  color: #ffffff;
 }
 
 .totals .subtotal {
   font-weight: bold;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid #666;
   padding-bottom: 3px;
   margin-bottom: 5px;
+  color: #ffffff;
 }
 
 .deposit-section {
   margin-top: 5px;
   padding: 5px;
-  background: #ffeeee;
-  border: 1px solid #ffaaaa;
+  background: #4a2a2a;
+  border: 1px solid #883333;
   white-space: nowrap;
 }
 
 .deposit-section label {
   font-weight: bold;
-  color: #cc0000;
+  color: #ff6666;
 }
 
 .deposit-section input {
   width: 100px;
   padding: 3px;
-  border: 1px solid #cc0000;
+  border: 1px solid #883333;
   font-family: 'Courier Prime', monospace;
   text-align: right;
   display: inline-block;
+  background: #444;
+  color: #ffffff;
 }
 
 .totals .grand {
   font-weight: bold;
   font-size: 0.9rem;
-  border-top: 2px solid #000;
+  border-top: 2px solid #666;
   padding-top: 6px;
   margin-top: 5px;
-  color: #000;
+  color: #ffffff;
   white-space: nowrap;
 }
 
 .nb-note {
   margin-top: 15px;
   padding: 6px;
-  background: #f9f9f9;
+  background: #3a3a3a;
   border-left: 4px solid #cc0000;
   font-size: 0.7rem;
   font-style: italic;
-  color: #555;
+  color: #aaaaaa;
   text-align: center;
 }
 
@@ -275,15 +297,18 @@ button:hover {
   font-size: 0.85rem;
   display: block;
   margin-bottom: 3px;
+  color: #ffffff;
 }
 
 .sign textarea {
   width: 60%;
   padding: 3px;
-  border: 1px solid #aaa;
+  border: 1px solid #666;
   font-family: 'Courier Prime', monospace;
   resize: vertical;
   font-size: 0.85rem;
+  background: #444;
+  color: #ffffff;
 }
 
 .actions {
@@ -292,28 +317,31 @@ button:hover {
 }
 
 .search-container {
-  background: #fff;
+  background: #3a3a3a;
   margin: 20px auto;
   padding: 12px;
   max-width: 750px;
-  border: 1px solid #000;
+  border: 1px solid #666;
 }
 
 .search-container h3 {
   margin-top: 0;
   margin-bottom: 8px;
   font-size: 0.9rem;
+  color: #ffffff;
 }
 
 .search-container textarea {
   width: 70%;
   padding: 4px;
   margin-right: 5px;
-  border: 1px solid #aaa;
+  border: 1px solid #666;
   font-family: 'Courier Prime', monospace;
   resize: vertical;
   vertical-align: middle;
   font-size: 0.85rem;
+  background: #444;
+  color: #ffffff;
 }
 
 .search-container button {
@@ -323,13 +351,15 @@ button:hover {
 
 #searchResults {
   margin-top: 10px;
+  color: #ffffff;
 }
 
 .found-receipt {
-  border: 1px solid #ccc;
+  border: 1px solid #666;
   padding: 6px;
   margin: 8px 0;
-  background: #f9f9f9;
+  background: #3a3a3a;
+  color: #ffffff;
 }
 
 .found-receipt button {
@@ -410,20 +440,28 @@ button:hover {
   }
   
   body, .invoice-container {
-    background: white;
+    background: white !important;
+    color: black !important;
     border: none;
     padding: 0;
     margin: 0;
   }
   
   th, td {
-    border: 1px solid black;
+    border: 1px solid black !important;
+    color: black !important;
+  }
+  
+  th {
+    background: #eee !important;
   }
   
   textarea {
     border: none;
     resize: none;
     overflow: visible;
+    color: black !important;
+    background: transparent !important;
   }
   
   .deposit-section.hide-on-print {
@@ -433,6 +471,10 @@ button:hover {
   .nb-note {
     background: none;
     border-left: 1px solid #aaa;
-    color: #000;
+    color: #000 !important;
+  }
+  
+  .header h2, .header p, .info label, h3, .totals div, .totals .subtotal, .totals .grand, .sign label {
+    color: black !important;
   }
 }
