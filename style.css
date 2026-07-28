@@ -4,14 +4,14 @@
 }
 
 body {
-  background: #000000;  /* BLACK outside background */
+  background: #000000;
   margin: 0;
   padding: 10px;
   color: #ffffff;
 }
 
 .invoice-container {
-  background: #2d2d2d;  /* DARK GREY inside */
+  background: #2d2d2d;
   padding: 15px;
   margin: auto;
   max-width: 750px;
@@ -24,19 +24,29 @@ body {
   text-align: center;
   border-bottom: 2px solid #444;
   margin-bottom: 10px;
-  padding-bottom: 3px;
+  padding-bottom: 10px;
 }
 
 .header h2 {
-  margin: 0 0 3px 0;
-  font-size: 1rem;
+  margin: 0 0 8px 0;
+  font-size: 1.2rem;
   color: #ffffff;
+  letter-spacing: 2px;
 }
 
 .header p {
   margin: 0;
   font-size: 0.8rem;
   color: #cccccc;
+  line-height: 1.6;
+}
+
+.header p:first-of-type {
+  margin-bottom: 3px;
+}
+
+.header p:last-of-type {
+  margin-bottom: 10px;
 }
 
 .logos {
@@ -243,6 +253,14 @@ button:hover {
   color: #ffffff;
 }
 
+.totals .tax {
+  font-weight: bold;
+  color: #ffaa00;
+  border-bottom: 1px solid #444;
+  padding-bottom: 3px;
+  margin-bottom: 5px;
+}
+
 .deposit-section {
   margin-top: 5px;
   padding: 5px;
@@ -275,17 +293,6 @@ button:hover {
   margin-top: 5px;
   color: #ffffff;
   white-space: nowrap;
-}
-
-.nb-note {
-  margin-top: 15px;
-  padding: 6px;
-  background: #2d2d2d;
-  border-left: 4px solid #cc0000;
-  font-size: 0.7rem;
-  font-style: italic;
-  color: #aaaaaa;
-  text-align: center;
 }
 
 .sign {
@@ -468,13 +475,11 @@ button:hover {
     display: none;
   }
   
-  .nb-note {
-    background: none;
-    border-left: 1px solid #aaa;
-    color: #000 !important;
+  .header h2, .header p, .info label, h3, .totals div, .totals .subtotal, .totals .grand, .sign label {
+    color: black !important;
   }
   
-  .header h2, .header p, .info label, h3, .totals div, .totals .subtotal, .totals .grand, .sign label {
+  .totals .tax {
     color: black !important;
   }
   
