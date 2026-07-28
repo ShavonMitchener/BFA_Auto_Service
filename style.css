@@ -89,6 +89,17 @@ body {
   font-weight: bold;
 }
 
+/* FIX: Invoice Number field */
+#invoiceNo {
+  background: #3a3a3a !important;
+  color: #ffffff !important;
+  font-weight: bold !important;
+  border: 1px solid #555 !important;
+  padding: 3px !important;
+  font-family: 'Courier Prime', monospace !important;
+  font-size: 0.85rem !important;
+}
+
 h3 {
   margin-top: 15px;
   margin-bottom: 5px;
@@ -497,5 +508,11 @@ button:hover {
   .s-amt, .amt, .qty, .unit-price {
     color: black !important;
     background: transparent !important;
+  }
+  
+  #invoiceNo {
+    color: black !important;
+    background: transparent !important;
+    border: 1px solid #ccc !important;
   }
 }
