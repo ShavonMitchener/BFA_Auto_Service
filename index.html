@@ -77,7 +77,9 @@
   <!-- ===== TOTALS SECTION ===== -->
   <div class="totals">
     <div class="parts-total">Parts Total: $<span id="partsTotal">0.00</span></div>
-    <div class="labour-total">Labor Total: $<span id="labourTotalDisplay">0.00</span></div>
+    <div class="labour-total">
+      Labor Total: $<input type="number" id="labourTotalInput" min="0" step="0.01" value="0.00" class="labour-input">
+    </div>
     <div class="subtotal">SUBTOTAL: $<span id="subtotal">0.00</span></div>
     <div class="tax">TAX (7%): $<span id="taxAmount">0.00</span></div>
     <div class="deposit-section" id="depositSection">
