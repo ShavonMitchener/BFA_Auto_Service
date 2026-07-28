@@ -49,7 +49,7 @@ body {
   margin-bottom: 10px;
 }
 
-/* ===== LOGOS SECTION - UPDATED ===== */
+/* ===== LOGOS SECTION ===== */
 .logos {
   margin-top: 10px;
   display: flex;
@@ -66,8 +66,8 @@ body {
   object-fit: contain;
   display: block;
 }
-/* ===== END LOGOS SECTION ===== */
 
+/* ===== INFO SECTION ===== */
 .info {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -95,7 +95,35 @@ body {
   font-weight: bold;
 }
 
-/* FIX: Invoice Number field */
+/* ===== VEHICLE INFORMATION ===== */
+.vehicle-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  font-size: 0.85rem;
+  margin-bottom: 15px;
+}
+
+.vehicle-info label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 2px;
+  color: #ffffff;
+}
+
+.vehicle-info textarea {
+  width: 95%;
+  border: 1px solid #555;
+  padding: 3px;
+  font-size: 0.85rem;
+  resize: vertical;
+  font-family: 'Courier Prime', monospace;
+  background: #3a3a3a;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* ===== INVOICE NUMBER ===== */
 #invoiceNo {
   background: #3a3a3a !important;
   color: #ffffff !important;
@@ -131,39 +159,15 @@ th {
   color: #ffffff;
 }
 
-#serviceTable th:first-child,
-#serviceTable td:first-child {
-  width: 65%;
-}
-
-#serviceTable th:nth-child(2),
-#serviceTable td:nth-child(2) {
-  width: 20%;
-}
-
-#serviceTable th:last-child,
-#serviceTable td:last-child {
-  width: 15%;
-}
-
+/* ===== PARTS TABLE ===== */
 #partsTable th:first-child,
 #partsTable td:first-child {
-  width: 10%;
+  width: 65%;
 }
 
 #partsTable th:nth-child(2),
 #partsTable td:nth-child(2) {
-  width: 45%;
-}
-
-#partsTable th:nth-child(3),
-#partsTable td:nth-child(3) {
-  width: 15%;
-}
-
-#partsTable th:nth-child(4),
-#partsTable td:nth-child(4) {
-  width: 15%;
+  width: 20%;
 }
 
 #partsTable th:last-child,
@@ -171,7 +175,8 @@ th {
   width: 15%;
 }
 
-.s-desc, .desc {
+/* ===== INPUT FIELDS ===== */
+.part-desc {
   width: 100%;
   border: none;
   padding: 2px;
@@ -186,20 +191,8 @@ th {
   color: #ffffff;
 }
 
-.s-amt, .amt {
+.part-amt {
   width: 95%;
-  border: none;
-  padding: 3px;
-  text-align: center;
-  font-family: 'Courier Prime', monospace;
-  font-size: 0.85rem;
-  background: #3a3a3a;
-  color: #ffffff;
-  font-weight: bold;
-}
-
-.qty, .unit-price {
-  width: 90%;
   border: none;
   padding: 3px;
   text-align: center;
@@ -250,6 +243,7 @@ button:hover {
   background: #4a4a4a;
 }
 
+/* ===== TOTALS SECTION ===== */
 .totals {
   margin-top: 12px;
   border-top: 2px solid #444;
@@ -264,6 +258,27 @@ button:hover {
   font-size: 0.85rem;
   white-space: nowrap;
   color: #ffffff;
+}
+
+.totals .parts-total {
+  color: #ffffff;
+}
+
+.totals .labour-total {
+  color: #ffffff;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5px;
+}
+
+.totals .labour-total input {
+  background: #3a3a3a;
+  color: #ffffff;
+  font-weight: bold;
+  border: 1px solid #555;
+  padding: 3px;
+  border-radius: 0;
 }
 
 .totals .subtotal {
@@ -317,6 +332,7 @@ button:hover {
   white-space: nowrap;
 }
 
+/* ===== SIGN SECTION ===== */
 .sign {
   margin-top: 20px;
 }
@@ -346,6 +362,7 @@ button:hover {
   margin-top: 15px;
 }
 
+/* ===== SEARCH CONTAINER ===== */
 .search-container {
   background: #2d2d2d;
   margin: 20px auto;
@@ -406,6 +423,11 @@ button:hover {
     gap: 6px;
   }
   
+  .vehicle-info {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  
   .logos {
     gap: 15px;
   }
@@ -455,6 +477,11 @@ button:hover {
     white-space: normal;
   }
   
+  .totals .labour-total {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  
   .deposit-section {
     white-space: normal;
   }
@@ -466,23 +493,37 @@ button:hover {
 
 /* ===== PRINT STYLES ===== */
 @media print {
-  button, .actions, .search-container, .delete-btn {
-    display: none;
+  @page {
+    margin: 0.5in;
+    size: A4;
+    @top-center {
+      content: none;
+    }
+    @bottom-center {
+      content: none;
+    }
   }
   
-  #serviceTable th:last-child,
-  #serviceTable td:last-child,
+  button, .actions, .search-container, .delete-btn {
+    display: none !important;
+  }
+  
+  .deposit-section.hide-on-print {
+    display: none !important;
+  }
+  
   #partsTable th:last-child,
   #partsTable td:last-child {
-    display: none;
+    display: none !important;
   }
   
   body, .invoice-container {
     background: white !important;
     color: black !important;
-    border: none;
-    padding: 0;
-    margin: 0;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
   }
   
   th, td {
@@ -495,18 +536,14 @@ button:hover {
   }
   
   textarea {
-    border: none;
-    resize: none;
-    overflow: visible;
+    border: none !important;
+    resize: none !important;
+    overflow: visible !important;
     color: black !important;
     background: transparent !important;
   }
   
-  .deposit-section.hide-on-print {
-    display: none;
-  }
-  
-  .header h2, .header p, .info label, h3, .totals div, .totals .subtotal, .totals .grand, .sign label {
+  .info label, h3, .totals div, .totals .subtotal, .totals .grand {
     color: black !important;
   }
   
@@ -518,12 +555,18 @@ button:hover {
     filter: brightness(0) !important;
   }
   
-  .s-amt, .amt, .qty, .unit-price {
+  .part-amt {
     color: black !important;
     background: transparent !important;
   }
   
   #invoiceNo {
+    color: black !important;
+    background: transparent !important;
+    border: 1px solid #ccc !important;
+  }
+  
+  .totals .labour-total input {
     color: black !important;
     background: transparent !important;
     border: 1px solid #ccc !important;
