@@ -297,26 +297,36 @@ button:hover {
   white-space: nowrap;
   color: #ffffff;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 }
 
-.totals .parts-total {
-  color: #ffffff;
-}
-
-.totals .labour-total {
-  color: #ffffff;
+/* Label styling - fixed width so amounts align */
+.totals .parts-total,
+.totals .labour-total,
+.totals .subtotal,
+.totals .tax,
+.totals .grand {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
+}
+
+.totals .parts-total span,
+.totals .subtotal span,
+.totals .tax span,
+.totals .grand span {
+  min-width: 100px;
+  text-align: right;
+  display: inline-block;
 }
 
 /* Labor Total Input - Transparent like others */
 .totals .labour-total input {
-  width: 120px;
+  min-width: 100px;
+  width: 100px;
   background: transparent !important;
   color: #ffffff !important;
   font-weight: bold !important;
@@ -329,6 +339,7 @@ button:hover {
   outline: none !important;
   -webkit-appearance: none !important;
   appearance: none !important;
+  display: inline-block !important;
 }
 
 .totals .subtotal {
@@ -337,10 +348,6 @@ button:hover {
   padding-bottom: 3px;
   margin-bottom: 5px;
   color: #ffffff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
 }
 
 .totals .tax {
@@ -349,10 +356,6 @@ button:hover {
   border-bottom: 1px solid #444;
   padding-bottom: 3px;
   margin-bottom: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
 }
 
 .deposit-section {
@@ -361,8 +364,12 @@ button:hover {
   background: #3a2a2a;
   border: 1px solid #883333;
   white-space: nowrap;
-  display: inline-block;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
   width: auto;
+  margin-left: auto;
 }
 
 .deposit-section label {
@@ -390,10 +397,6 @@ button:hover {
   margin-top: 5px;
   color: #ffffff;
   white-space: nowrap;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
 }
 
 /* ===== SIGN SECTION ===== */
@@ -616,7 +619,11 @@ button:hover {
   .part-desc,
   .part-amt,
   #invoiceNo,
-  .totals .labour-total input {
+  .totals .labour-total input,
+  .totals .parts-total span,
+  .totals .subtotal span,
+  .totals .tax span,
+  .totals .grand span {
     color: black !important;
   }
   
@@ -652,7 +659,8 @@ button:hover {
     font-size: 0.85rem !important;
     font-weight: bold !important;
     text-align: right !important;
-    width: 120px !important;
+    min-width: 100px !important;
+    width: 100px !important;
     display: inline-block !important;
   }
   
@@ -668,9 +676,13 @@ button:hover {
   .deposit-section {
     background: transparent !important;
     border: 1px solid black !important;
-    display: inline-block !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    gap: 10px !important;
     padding: 3px 10px !important;
     margin-top: 5px !important;
+    margin-left: auto !important;
   }
   
   .deposit-section label {
@@ -684,6 +696,7 @@ button:hover {
     background: transparent !important;
     color: black !important;
     width: 100px !important;
+    min-width: 100px !important;
     text-align: right !important;
     font-weight: bold !important;
     padding: 2px 5px !important;
@@ -716,37 +729,30 @@ button:hover {
   /* ===== ALIGN TOTALS UNIFORMLY IN PRINT ===== */
   .totals div {
     display: flex !important;
-    justify-content: space-between !important;
+    justify-content: flex-end !important;
     align-items: center !important;
-    gap: 20px !important;
+    gap: 10px !important;
     white-space: nowrap !important;
   }
   
-  .totals .labour-total {
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    gap: 20px !important;
-  }
-  
-  .totals .subtotal {
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    gap: 20px !important;
-  }
-  
-  .totals .tax {
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    gap: 20px !important;
-  }
-  
+  .totals .parts-total,
+  .totals .labour-total,
+  .totals .subtotal,
+  .totals .tax,
   .totals .grand {
     display: flex !important;
-    justify-content: space-between !important;
+    justify-content: flex-end !important;
     align-items: center !important;
-    gap: 20px !important;
+    gap: 10px !important;
+  }
+  
+  .totals .parts-total span,
+  .totals .subtotal span,
+  .totals .tax span,
+  .totals .grand span {
+    min-width: 100px !important;
+    text-align: right !important;
+    display: inline-block !important;
+    color: black !important;
   }
 }
