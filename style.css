@@ -86,6 +86,7 @@ body {
   font-family: 'Courier Prime', monospace;
   background: #3a3a3a;
   color: #ffffff;
+  font-weight: bold;
 }
 
 h3 {
@@ -175,8 +176,9 @@ th {
   text-align: center;
   font-family: 'Courier Prime', monospace;
   font-size: 0.85rem;
-  background: transparent;
+  background: #3a3a3a;
   color: #ffffff;
+  font-weight: bold;
 }
 
 .qty, .unit-price {
@@ -186,8 +188,9 @@ th {
   text-align: center;
   font-family: 'Courier Prime', monospace;
   font-size: 0.85rem;
-  background: transparent;
+  background: #3a3a3a;
   color: #ffffff;
+  font-weight: bold;
 }
 
 .delete-btn {
@@ -211,7 +214,8 @@ th {
 
 textarea:focus, input:focus {
   outline: none;
-  background: #444;
+  background: #4a4a4a;
+  color: #ffffff;
 }
 
 button {
@@ -283,6 +287,7 @@ button:hover {
   display: inline-block;
   background: #3a3a3a;
   color: #ffffff;
+  font-weight: bold;
 }
 
 .totals .grand {
@@ -316,6 +321,7 @@ button:hover {
   font-size: 0.85rem;
   background: #3a3a3a;
   color: #ffffff;
+  font-weight: bold;
 }
 
 .actions {
@@ -349,6 +355,7 @@ button:hover {
   font-size: 0.85rem;
   background: #3a3a3a;
   color: #ffffff;
+  font-weight: bold;
 }
 
 .search-container button {
@@ -485,5 +492,10 @@ button:hover {
   
   .logos img {
     filter: brightness(0) !important;
+  }
+  
+  .s-amt, .amt, .qty, .unit-price {
+    color: black !important;
+    background: transparent !important;
   }
 }
