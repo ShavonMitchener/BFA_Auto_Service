@@ -287,7 +287,7 @@ button:hover {
   margin-top: 12px;
   padding-top: 8px;
   text-align: right;
-  max-width: 350px;
+  max-width: 320px;
   margin-left: auto;
 }
 
@@ -297,33 +297,26 @@ button:hover {
   white-space: nowrap;
   color: #ffffff;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 }
 
 /* Label styling - fixed width so amounts align */
-.totals .parts-total,
-.totals .labour-total,
-.totals .subtotal,
-.totals .tax,
-.totals .grand {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 10px;
+.totals .parts-total {
+  color: #ffffff;
 }
 
-.totals .parts-total span,
-.totals .subtotal span,
-.totals .tax span,
-.totals .grand span {
+.totals .parts-total span {
   min-width: 100px;
   text-align: right;
   display: inline-block;
 }
 
-/* Labor Total Input - Transparent like others */
+.totals .labour-total {
+  color: #ffffff;
+}
+
 .totals .labour-total input {
   min-width: 100px;
   width: 100px;
@@ -332,7 +325,7 @@ button:hover {
   font-weight: bold !important;
   border: none !important;
   border-bottom: 1px solid #555 !important;
-  padding: 2px 5px !important;
+  padding: 2px 0 !important;
   text-align: right !important;
   font-family: 'Courier Prime', monospace !important;
   font-size: 0.85rem !important;
@@ -350,12 +343,24 @@ button:hover {
   color: #ffffff;
 }
 
+.totals .subtotal span {
+  min-width: 100px;
+  text-align: right;
+  display: inline-block;
+}
+
 .totals .tax {
   font-weight: bold;
   color: #ffaa00;
   border-bottom: 1px solid #444;
   padding-bottom: 3px;
   margin-bottom: 5px;
+}
+
+.totals .tax span {
+  min-width: 100px;
+  text-align: right;
+  display: inline-block;
 }
 
 .deposit-section {
@@ -397,6 +402,12 @@ button:hover {
   margin-top: 5px;
   color: #ffffff;
   white-space: nowrap;
+}
+
+.totals .grand span {
+  min-width: 100px;
+  text-align: right;
+  display: inline-block;
 }
 
 /* ===== SIGN SECTION ===== */
@@ -729,21 +740,10 @@ button:hover {
   /* ===== ALIGN TOTALS UNIFORMLY IN PRINT ===== */
   .totals div {
     display: flex !important;
-    justify-content: flex-end !important;
+    justify-content: space-between !important;
     align-items: center !important;
-    gap: 10px !important;
+    gap: 20px !important;
     white-space: nowrap !important;
-  }
-  
-  .totals .parts-total,
-  .totals .labour-total,
-  .totals .subtotal,
-  .totals .tax,
-  .totals .grand {
-    display: flex !important;
-    justify-content: flex-end !important;
-    align-items: center !important;
-    gap: 10px !important;
   }
   
   .totals .parts-total span,
@@ -753,6 +753,5 @@ button:hover {
     min-width: 100px !important;
     text-align: right !important;
     display: inline-block !important;
-    color: black !important;
   }
 }
