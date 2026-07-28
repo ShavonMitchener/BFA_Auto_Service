@@ -304,21 +304,6 @@ button:hover {
 
 .totals .labour-total {
   color: #ffffff;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 5px;
-}
-
-.totals .labour-total input {
-  width: 120px;
-  background: #3a3a3a;
-  color: #ffffff;
-  font-weight: bold;
-  border: 1px solid #555;
-  padding: 5px;
-  border-radius: 0;
-  text-align: right;
 }
 
 .totals .subtotal {
@@ -519,11 +504,6 @@ button:hover {
     white-space: normal;
   }
   
-  .totals .labour-total {
-    flex-wrap: wrap;
-    justify-content: flex-end;
-  }
-  
   .deposit-section {
     white-space: normal;
     display: block;
@@ -612,7 +592,6 @@ button:hover {
   input,
   .part-amt,
   #invoiceNo,
-  .totals .labour-total input,
   .deposit-section input {
     border: none !important;
     border-bottom: 1px solid #999 !important;
@@ -636,30 +615,6 @@ button:hover {
     border-bottom: none !important;
     background: transparent !important;
     color: black !important;
-  }
-  
-  /* ===== LABOR TOTAL - CLEAN ===== */
-  .totals .labour-total {
-    display: flex !important;
-    justify-content: flex-end !important;
-    align-items: center !important;
-    gap: 5px !important;
-  }
-  
-  .totals .labour-total input {
-    width: 120px !important;
-    text-align: right !important;
-    border: none !important;
-    border-bottom: 1px solid #999 !important;
-    background: transparent !important;
-    color: black !important;
-    padding: 2px 5px !important;
-    font-weight: bold !important;
-    font-size: 0.85rem !important;
-    font-family: 'Courier Prime', monospace !important;
-    box-shadow: none !important;
-    outline: none !important;
-    display: inline-block !important;
   }
   
   /* ===== DEPOSIT SECTION - CLEAN ===== */
