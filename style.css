@@ -287,7 +287,7 @@ button:hover {
   margin-top: 12px;
   padding-top: 8px;
   text-align: right;
-  max-width: 320px;
+  max-width: 350px;
   margin-left: auto;
 }
 
@@ -296,6 +296,10 @@ button:hover {
   font-size: 0.85rem;
   white-space: nowrap;
   color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
 }
 
 .totals .parts-total {
@@ -305,20 +309,26 @@ button:hover {
 .totals .labour-total {
   color: #ffffff;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  gap: 5px;
+  gap: 20px;
 }
 
+/* Labor Total Input - Transparent like others */
 .totals .labour-total input {
   width: 120px;
-  background: #3a3a3a;
-  color: #ffffff;
-  font-weight: bold;
-  border: 1px solid #555;
-  padding: 5px;
-  border-radius: 0;
-  text-align: right;
+  background: transparent !important;
+  color: #ffffff !important;
+  font-weight: bold !important;
+  border: none !important;
+  border-bottom: 1px solid #555 !important;
+  padding: 2px 5px !important;
+  text-align: right !important;
+  font-family: 'Courier Prime', monospace !important;
+  font-size: 0.85rem !important;
+  outline: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
 }
 
 .totals .subtotal {
@@ -327,6 +337,10 @@ button:hover {
   padding-bottom: 3px;
   margin-bottom: 5px;
   color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
 }
 
 .totals .tax {
@@ -335,6 +349,10 @@ button:hover {
   border-bottom: 1px solid #444;
   padding-bottom: 3px;
   margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
 }
 
 .deposit-section {
@@ -372,6 +390,10 @@ button:hover {
   margin-top: 5px;
   color: #ffffff;
   white-space: nowrap;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
 }
 
 /* ===== SIGN SECTION ===== */
@@ -593,7 +615,8 @@ button:hover {
   #date,
   .part-desc,
   .part-amt,
-  #invoiceNo {
+  #invoiceNo,
+  .totals .labour-total input {
     color: black !important;
   }
   
@@ -612,7 +635,8 @@ button:hover {
   input,
   .part-amt,
   #invoiceNo,
-  .deposit-section input {
+  .deposit-section input,
+  .totals .labour-total input {
     border: none !important;
     border-bottom: 1px solid #999 !important;
     background: transparent !important;
@@ -627,24 +651,8 @@ button:hover {
     font-family: 'Courier Prime', monospace !important;
     font-size: 0.85rem !important;
     font-weight: bold !important;
-  }
-  
-  /* ===== LABOR TOTAL INPUT - CLEAN ON PRINT ===== */
-  .labour-input {
-    border: none !important;
-    border-bottom: 1px solid #999 !important;
-    background: transparent !important;
-    color: black !important;
-    padding: 2px 5px !important;
-    font-weight: bold !important;
-    font-size: 0.85rem !important;
-    font-family: 'Courier Prime', monospace !important;
-    width: 120px !important;
     text-align: right !important;
-    box-shadow: none !important;
-    outline: none !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
+    width: 120px !important;
     display: inline-block !important;
   }
   
@@ -691,7 +699,7 @@ button:hover {
     filter: brightness(0) !important;
   }
   
-  /* Borders for totals */
+  /* Borders for totals - clean print */
   .totals .subtotal {
     border-bottom: 1px solid black !important;
   }
@@ -703,5 +711,42 @@ button:hover {
   
   .totals .grand {
     border-top: 2px solid black !important;
+  }
+  
+  /* ===== ALIGN TOTALS UNIFORMLY IN PRINT ===== */
+  .totals div {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 20px !important;
+    white-space: nowrap !important;
+  }
+  
+  .totals .labour-total {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 20px !important;
+  }
+  
+  .totals .subtotal {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 20px !important;
+  }
+  
+  .totals .tax {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 20px !important;
+  }
+  
+  .totals .grand {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 20px !important;
   }
 }
