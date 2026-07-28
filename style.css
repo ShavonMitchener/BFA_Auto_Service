@@ -12,7 +12,7 @@ body {
 
 .invoice-container {
   background: #2d2d2d;
-  padding: 15px;
+  padding: 20px;
   margin: auto;
   max-width: 750px;
   border: 1px solid #444;
@@ -20,11 +20,16 @@ body {
   color: #ffffff;
 }
 
+/* ===== DIVIDER LINES ===== */
+.section-divider {
+  border: none;
+  border-top: 2px solid #444;
+  margin: 15px 0;
+}
+
+/* ===== HEADER SECTION ===== */
 .header {
   text-align: center;
-  border-bottom: 2px solid #444;
-  margin-bottom: 10px;
-  padding-bottom: 10px;
 }
 
 .header h2 {
@@ -71,9 +76,9 @@ body {
 .info {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  gap: 8px 30px;
   font-size: 0.85rem;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 
 .info label {
@@ -84,9 +89,9 @@ body {
 }
 
 .info textarea, .info input {
-  width: 95%;
+  width: 100%;
   border: 1px solid #555;
-  padding: 3px;
+  padding: 5px;
   font-size: 0.85rem;
   resize: vertical;
   font-family: 'Courier Prime', monospace;
@@ -95,13 +100,32 @@ body {
   font-weight: bold;
 }
 
+.info-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.info-right {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+#date {
+  font-weight: bold;
+  color: #ffffff;
+  padding: 5px 0;
+  display: block;
+}
+
 /* ===== VEHICLE INFORMATION ===== */
 .vehicle-info {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  gap: 8px 30px;
   font-size: 0.85rem;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 
 .vehicle-info label {
@@ -112,9 +136,9 @@ body {
 }
 
 .vehicle-info textarea {
-  width: 95%;
+  width: 100%;
   border: 1px solid #555;
-  padding: 3px;
+  padding: 5px;
   font-size: 0.85rem;
   resize: vertical;
   font-family: 'Courier Prime', monospace;
@@ -123,20 +147,32 @@ body {
   font-weight: bold;
 }
 
+.vehicle-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.vehicle-right {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
 /* ===== INVOICE NUMBER ===== */
 #invoiceNo {
   background: #3a3a3a !important;
   color: #ffffff !important;
   font-weight: bold !important;
   border: 1px solid #555 !important;
-  padding: 3px !important;
+  padding: 5px !important;
   font-family: 'Courier Prime', monospace !important;
   font-size: 0.85rem !important;
 }
 
 h3 {
-  margin-top: 15px;
-  margin-bottom: 5px;
+  margin-top: 5px;
+  margin-bottom: 8px;
   font-size: 0.9rem;
   color: #ffffff;
 }
@@ -162,12 +198,12 @@ th {
 /* ===== PARTS TABLE ===== */
 #partsTable th:first-child,
 #partsTable td:first-child {
-  width: 65%;
+  width: 70%;
 }
 
 #partsTable th:nth-child(2),
 #partsTable td:nth-child(2) {
-  width: 20%;
+  width: 15%;
 }
 
 #partsTable th:last-child,
@@ -175,24 +211,26 @@ th {
   width: 15%;
 }
 
-/* ===== INPUT FIELDS ===== */
+/* Description textarea - bigger and can hold more text */
 .part-desc {
   width: 100%;
   border: none;
-  padding: 2px;
+  padding: 4px;
   font-family: 'Courier Prime', monospace;
   font-size: 0.85rem;
   resize: vertical;
   white-space: pre-wrap;
   word-wrap: break-word;
   word-break: break-word;
-  line-height: 1.3;
+  line-height: 1.5;
   background: transparent;
   color: #ffffff;
+  min-height: 30px;
 }
 
+/* Amount input - smaller */
 .part-amt {
-  width: 95%;
+  width: 90%;
   border: none;
   padding: 3px;
   text-align: center;
@@ -229,7 +267,7 @@ textarea:focus, input:focus {
 }
 
 button {
-  padding: 4px 10px;
+  padding: 6px 14px;
   margin: 3px;
   cursor: pointer;
   border: 1px solid #555;
@@ -237,6 +275,7 @@ button {
   font-family: 'Courier Prime', monospace;
   font-size: 0.8rem;
   color: #ffffff;
+  border-radius: 3px;
 }
 
 button:hover {
@@ -246,7 +285,6 @@ button:hover {
 /* ===== TOTALS SECTION ===== */
 .totals {
   margin-top: 12px;
-  border-top: 2px solid #444;
   padding-top: 8px;
   text-align: right;
   max-width: 320px;
@@ -273,12 +311,14 @@ button:hover {
 }
 
 .totals .labour-total input {
+  width: 120px;
   background: #3a3a3a;
   color: #ffffff;
   font-weight: bold;
   border: 1px solid #555;
-  padding: 3px;
+  padding: 5px;
   border-radius: 0;
+  text-align: right;
 }
 
 .totals .subtotal {
@@ -299,10 +339,12 @@ button:hover {
 
 .deposit-section {
   margin-top: 5px;
-  padding: 5px;
+  padding: 5px 10px;
   background: #3a2a2a;
   border: 1px solid #883333;
   white-space: nowrap;
+  display: inline-block;
+  width: auto;
 }
 
 .deposit-section label {
@@ -312,7 +354,7 @@ button:hover {
 
 .deposit-section input {
   width: 100px;
-  padding: 3px;
+  padding: 5px;
   border: 1px solid #883333;
   font-family: 'Courier Prime', monospace;
   text-align: right;
@@ -334,7 +376,7 @@ button:hover {
 
 /* ===== SIGN SECTION ===== */
 .sign {
-  margin-top: 20px;
+  margin-top: 5px;
 }
 
 .sign label {
@@ -347,7 +389,7 @@ button:hover {
 
 .sign textarea {
   width: 60%;
-  padding: 3px;
+  padding: 5px;
   border: 1px solid #555;
   font-family: 'Courier Prime', monospace;
   resize: vertical;
@@ -359,14 +401,14 @@ button:hover {
 
 .actions {
   text-align: center;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 /* ===== SEARCH CONTAINER ===== */
 .search-container {
   background: #2d2d2d;
   margin: 20px auto;
-  padding: 12px;
+  padding: 15px;
   max-width: 750px;
   border: 1px solid #444;
 }
@@ -380,7 +422,7 @@ button:hover {
 
 .search-container textarea {
   width: 70%;
-  padding: 4px;
+  padding: 5px;
   margin-right: 5px;
   border: 1px solid #555;
   font-family: 'Courier Prime', monospace;
@@ -484,6 +526,7 @@ button:hover {
   
   .deposit-section {
     white-space: normal;
+    display: block;
   }
   
   .totals .grand {
@@ -524,6 +567,10 @@ button:hover {
     padding: 0 !important;
     margin: 0 !important;
     box-shadow: none !important;
+  }
+  
+  .section-divider {
+    border-top: 1px solid #ccc !important;
   }
   
   th, td {
@@ -570,5 +617,9 @@ button:hover {
     color: black !important;
     background: transparent !important;
     border: 1px solid #ccc !important;
+  }
+  
+  #date {
+    color: black !important;
   }
 }
