@@ -1,6 +1,10 @@
+// ===== UNIQUE KEYS FOR ALL COUNTRY AUTO =====
+const INVOICE_KEY = "allCountryAuto_invoiceNo";
+const RECEIPTS_KEY = "allCountryAuto_receipts";
+
 document.getElementById("date").textContent = new Date().toLocaleDateString();
 
-let currentInvoiceNo = localStorage.getItem("currentInvoiceNo") || "001";
+let currentInvoiceNo = localStorage.getItem(INVOICE_KEY) || "001";
 document.getElementById("invoiceNo").value = currentInvoiceNo;
 
 function autoExpand(textarea) {
@@ -22,7 +26,7 @@ function calculateTotals() {
   });
   
   let subtotal = serviceTotal + partsTotal;
-  let tax = subtotal * 0.07; // 7% tax
+  let tax = subtotal * 0.07;
   let deposit = parseFloat(document.getElementById("depositAmount").value) || 0;
   let grandTotal = subtotal + tax - deposit;
   
@@ -147,22 +151,22 @@ document.getElementById("saveBtn").addEventListener("click", function() {
     });
   });
   
-  let receipts = JSON.parse(localStorage.getItem("receipts") || "[]");
+  let receipts = JSON.parse(localStorage.getItem(RECEIPTS_KEY) || "[]");
   
   let existingIndex = receipts.findIndex(function(r) { return r.invoiceNo === receipt.invoiceNo; });
   if (existingIndex !== -1) {
     if (confirm("Invoice #" + receipt.invoiceNo + " already exists. Overwrite?")) {
       receipts[existingIndex] = receipt;
-      localStorage.setItem("receipts", JSON.stringify(receipts));
+      localStorage.setItem(RECEIPTS_KEY, JSON.stringify(receipts));
       alert("Receipt updated!");
     }
   } else {
     receipts.push(receipt);
-    localStorage.setItem("receipts", JSON.stringify(receipts));
+    localStorage.setItem(RECEIPTS_KEY, JSON.stringify(receipts));
     alert("Receipt saved!");
   }
   
-  localStorage.setItem("currentInvoiceNo", receipt.invoiceNo);
+  localStorage.setItem(INVOICE_KEY, receipt.invoiceNo);
 });
 
 function loadReceiptIntoForm(r) {
@@ -194,7 +198,7 @@ document.getElementById("searchBtn").addEventListener("click", function() {
   let results = document.getElementById("searchResults");
   results.innerHTML = "";
   
-  let receipts = JSON.parse(localStorage.getItem("receipts") || "[]");
+  let receipts = JSON.parse(localStorage.getItem(RECEIPTS_KEY) || "[]");
   let matches = receipts.filter(function(r) {
     return r.invoiceNo.toLowerCase().includes(query) || r.customer.toLowerCase().includes(query);
   });
@@ -220,9 +224,9 @@ document.getElementById("searchBtn").addEventListener("click", function() {
     
     div.querySelector(".deleteBtn").addEventListener("click", function() {
       if (confirm("Delete invoice #" + r.invoiceNo + "?")) {
-        let all = JSON.parse(localStorage.getItem("receipts") || "[]");
+        let all = JSON.parse(localStorage.getItem(RECEIPTS_KEY) || "[]");
         let filtered = all.filter(function(x) { return x.invoiceNo !== r.invoiceNo; });
-        localStorage.setItem("receipts", JSON.stringify(filtered));
+        localStorage.setItem(RECEIPTS_KEY, JSON.stringify(filtered));
         div.remove();
         alert("Invoice deleted.");
       }
@@ -233,13 +237,13 @@ document.getElementById("searchBtn").addEventListener("click", function() {
 });
 
 document.getElementById("exportBtn").addEventListener("click", function() {
-  let receipts = JSON.parse(localStorage.getItem("receipts") || "[]");
+  let receipts = JSON.parse(localStorage.getItem(RECEIPTS_KEY) || "[]");
   let data = { receipts: receipts };
   let blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
   let url = URL.createObjectURL(blob);
   let a = document.createElement("a");
   a.href = url;
-  a.download = "receipts_backup_" + new Date().toISOString().split("T")[0] + ".json";
+  a.download = "allcountryauto_receipts_" + new Date().toISOString().split("T")[0] + ".json";
   a.click();
   URL.revokeObjectURL(url);
   alert("Exported " + receipts.length + " receipts!");
@@ -257,7 +261,7 @@ document.getElementById("importFile").addEventListener("change", function(event)
   reader.onload = function(e) {
     try {
       let data = JSON.parse(e.target.result);
-      let existingReceipts = JSON.parse(localStorage.getItem("receipts") || "[]");
+      let existingReceipts = JSON.parse(localStorage.getItem(RECEIPTS_KEY) || "[]");
       let mergedReceipts = [...existingReceipts];
       
       if (data.receipts && data.receipts.length > 0) {
@@ -269,7 +273,7 @@ document.getElementById("importFile").addEventListener("change", function(event)
         });
       }
       
-      localStorage.setItem("receipts", JSON.stringify(mergedReceipts));
+      localStorage.setItem(RECEIPTS_KEY, JSON.stringify(mergedReceipts));
       alert("Imported " + data.receipts.length + " receipts!");
       location.reload();
     } catch(err) {
@@ -288,7 +292,7 @@ document.getElementById("newBtn").addEventListener("click", function() {
   let newNumber = (parseInt(currentInvoiceNo) + 1).toString().padStart(3, "0");
   document.getElementById("invoiceNo").value = newNumber;
   currentInvoiceNo = newNumber;
-  localStorage.setItem("currentInvoiceNo", currentInvoiceNo);
+  localStorage.setItem(INVOICE_KEY, currentInvoiceNo);
   
   document.getElementById("custName").value = "";
   document.getElementById("vehicle").value = "";
@@ -307,7 +311,7 @@ document.getElementById("resetBtn").addEventListener("click", function() {
   if (confirm("Reset invoice number back to 001?")) {
     document.getElementById("invoiceNo").value = "001";
     currentInvoiceNo = "001";
-    localStorage.setItem("currentInvoiceNo", "001");
+    localStorage.setItem(INVOICE_KEY, "001");
   }
 });
 
