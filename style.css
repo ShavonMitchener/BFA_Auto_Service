@@ -611,14 +611,10 @@ button:hover {
     background: #eee !important;
   }
   
-  /* All textareas and inputs - remove background and borders */
+  /* All textareas and inputs */
   textarea, 
-  input,
-  .part-amt,
-  #invoiceNo,
-  .totals .labour-total input,
-  .deposit-section input {
-    border: 1px solid #ccc !important;
+  input {
+    border: none !important;
     background: transparent !important;
     color: black !important;
     resize: none !important;
@@ -635,23 +631,22 @@ button:hover {
     color: black !important;
   }
   
-  /* Logos - turn black */
-  .logos img {
-    filter: brightness(0) !important;
-  }
-  
-  /* Deposit section */
-  .deposit-section {
+  /* Part amount - clean */
+  .part-amt {
+    border: none !important;
     background: transparent !important;
-    border: 1px solid black !important;
-    display: inline-block !important;
-  }
-  
-  .deposit-section label {
     color: black !important;
+    text-align: center !important;
   }
   
-  /* Labor total input - remove box styling */
+  /* ===== FIX LABOR TOTAL INPUT - NO BOX ===== */
+  .totals .labour-total {
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    gap: 5px !important;
+  }
+  
   .totals .labour-total input {
     display: inline-block !important;
     width: 120px !important;
@@ -659,7 +654,46 @@ button:hover {
     border: none !important;
     border-bottom: 1px solid #ccc !important;
     background: transparent !important;
+    color: black !important;
     padding: 2px 5px !important;
+    font-weight: bold !important;
+    font-size: 0.85rem !important;
+    font-family: 'Courier Prime', monospace !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+  
+  /* ===== FIX DEPOSIT SECTION ===== */
+  .deposit-section {
+    background: transparent !important;
+    border: 1px solid black !important;
+    display: inline-block !important;
+    padding: 3px 10px !important;
+  }
+  
+  .deposit-section label {
+    color: black !important;
+  }
+  
+  .deposit-section input {
+    border: none !important;
+    background: transparent !important;
+    color: black !important;
+    width: 100px !important;
+    text-align: right !important;
+    font-weight: bold !important;
+  }
+  
+  /* Invoice number */
+  #invoiceNo {
+    border: none !important;
+    background: transparent !important;
+    color: black !important;
+  }
+  
+  /* Logos - turn black */
+  .logos img {
+    filter: brightness(0) !important;
   }
   
   /* Grand total */
