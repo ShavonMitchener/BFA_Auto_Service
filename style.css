@@ -247,18 +247,20 @@ th {
   min-height: 30px;
 }
 
-/* Amount input - smaller */
+/* Amount input - CENTERED */
 .part-amt {
   width: 90%;
   border: none;
   padding: 3px;
-  text-align: center;
+  text-align: center !important;
   font-family: 'Courier Prime', monospace;
   font-size: 0.85rem;
   background: #3a3a3a;
   color: #ffffff;
   font-weight: bold;
   border-radius: 2px;
+  display: block;
+  margin: 0 auto;
 }
 
 .delete-btn {
@@ -841,5 +843,14 @@ button:hover {
     background: transparent !important;
     color: black !important;
     padding: 2px 5px !important;
+  }
+  
+  /* ===== FIX PART AMOUNT ON PRINT ===== */
+  .part-amt {
+    text-align: center !important;
+    border: none !important;
+    border-bottom: 1px solid #999 !important;
+    background: transparent !important;
+    color: black !important;
   }
 }
