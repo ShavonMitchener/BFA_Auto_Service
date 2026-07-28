@@ -1,4 +1,6 @@
-// ===== UNIQUE KEYS FOR ALL COUNTRY AUTO =====
+// ============================================
+// UNIQUE KEYS FOR ALL COUNTRY AUTO
+// ============================================
 const INVOICE_KEY = "allCountryAuto_invoiceNo";
 const RECEIPTS_KEY = "allCountryAuto_receipts";
 
@@ -12,25 +14,24 @@ function autoExpand(textarea) {
   textarea.style.height = Math.min(textarea.scrollHeight, 100) + "px";
 }
 
+// ===== CALCULATE TOTALS =====
 function calculateTotals() {
-  let serviceTotal = 0;
   let partsTotal = 0;
   
-  document.querySelectorAll(".s-amt").forEach(function(input) {
-    serviceTotal += parseFloat(input.value) || 0;
-  });
-  
+  // Calculate Parts Total
   document.querySelectorAll("#partsBody tr").forEach(function(row) {
-    let amt = parseFloat(row.querySelector(".amt").value) || 0;
+    let amt = parseFloat(row.querySelector(".part-amt").value) || 0;
     partsTotal += amt;
   });
   
-  let subtotal = serviceTotal + partsTotal;
-  let tax = subtotal * 0.07;
+  // Get Labour Total from input field
+  let labourTotal = parseFloat(document.getElementById("labourTotalInput").value) || 0;
+  
+  let subtotal = partsTotal + labourTotal;
+  let tax = subtotal * 0.07; // 7% tax
   let deposit = parseFloat(document.getElementById("depositAmount").value) || 0;
   let grandTotal = subtotal + tax - deposit;
   
-  document.getElementById("serviceTotal").textContent = serviceTotal.toFixed(2);
   document.getElementById("partsTotal").textContent = partsTotal.toFixed(2);
   document.getElementById("subtotal").textContent = subtotal.toFixed(2);
   document.getElementById("taxAmount").textContent = tax.toFixed(2);
@@ -49,48 +50,15 @@ function deleteRow(btn) {
   calculateTotals();
 }
 
-function calculatePartAmount(row) {
-  let qty = parseFloat(row.querySelector(".qty").value) || 0;
-  let unitPrice = parseFloat(row.querySelector(".unit-price").value) || 0;
-  let amtInput = row.querySelector(".amt");
-  let calculatedAmount = qty * unitPrice;
-  amtInput.value = calculatedAmount.toFixed(2);
-  calculateTotals();
-}
-
-function addServiceRow(desc, amt) {
-  let body = document.getElementById("serviceBody");
-  let row = document.createElement("tr");
-  let d = desc || "";
-  let a = amt || "0.00";
-  
-  row.innerHTML = '<td><textarea class="s-desc" placeholder="Service description" rows="2">' + d + '</textarea></td>' +
-                  '<td><input type="number" class="s-amt" min="0" step="0.01" value="' + a + '"></td>' +
-                  '<td><button class="delete-btn">✖</button></td>';
-  
-  body.appendChild(row);
-  
-  let ta = row.querySelector("textarea");
-  ta.addEventListener("input", function() { autoExpand(this); });
-  autoExpand(ta);
-  
-  row.querySelector(".s-amt").addEventListener("input", calculateTotals);
-  row.querySelector(".delete-btn").addEventListener("click", function() { deleteRow(this); });
-  calculateTotals();
-}
-
-function addPartRow(qty, desc, unitPrice, amt) {
+// ===== PARTS FUNCTIONS =====
+function addPartRow(desc, amt) {
   let body = document.getElementById("partsBody");
   let row = document.createElement("tr");
-  let q = qty || "1";
   let d = desc || "";
-  let up = unitPrice || "0.00";
   let a = amt || "0.00";
   
-  row.innerHTML = '<td><input type="number" class="qty" min="0" step="any" value="' + q + '"></td>' +
-                  '<td><textarea class="desc" placeholder="Part name" rows="2" style="width:100%; box-sizing:border-box;">' + d + '</textarea></td>' +
-                  '<td><input type="number" class="unit-price" min="0" step="any" value="' + up + '"></td>' +
-                  '<td><input type="number" class="amt" min="0" step="any" value="' + a + '" style="width:100%; box-sizing:border-box;"></td>' +
+  row.innerHTML = '<td><textarea class="part-desc" placeholder="Part description" rows="2" style="width:100%; box-sizing:border-box;">' + d + '</textarea></td>' +
+                  '<td><input type="number" class="part-amt" min="0" step="any" value="' + a + '" style="width:95%; box-sizing:border-box; text-align:center;"></td>' +
                   '<td><button class="delete-btn" style="margin:0 auto; display:block;">✖</button></td>';
   
   body.appendChild(row);
@@ -99,22 +67,17 @@ function addPartRow(qty, desc, unitPrice, amt) {
   ta.addEventListener("input", function() { autoExpand(this); });
   autoExpand(ta);
   
-  let qtyInput = row.querySelector(".qty");
-  let unitPriceInput = row.querySelector(".unit-price");
-  let amtInput = row.querySelector(".amt");
-  
-  qtyInput.addEventListener("input", function() { calculatePartAmount(row); });
-  unitPriceInput.addEventListener("input", function() { calculatePartAmount(row); });
-  amtInput.addEventListener("input", calculateTotals);
-  
+  row.querySelector(".part-amt").addEventListener("input", calculateTotals);
   row.querySelector(".delete-btn").addEventListener("click", function() { deleteRow(this); });
   calculateTotals();
 }
 
-document.getElementById("addService").addEventListener("click", function() { addServiceRow(); });
+// ===== EVENT LISTENERS =====
 document.getElementById("addPart").addEventListener("click", function() { addPartRow(); });
+document.getElementById("labourTotalInput").addEventListener("input", calculateTotals);
 document.getElementById("depositAmount").addEventListener("input", calculateTotals);
 
+// ===== SAVE RECEIPT =====
 document.getElementById("saveBtn").addEventListener("click", function() {
   calculateTotals();
   
@@ -122,32 +85,25 @@ document.getElementById("saveBtn").addEventListener("click", function() {
     invoiceNo: document.getElementById("invoiceNo").value,
     date: document.getElementById("date").textContent,
     customer: document.getElementById("custName").value.trim(),
-    vehicle: document.getElementById("vehicle").value.trim(),
     fromStaff: document.getElementById("fromName").value.trim(),
+    vehicleModel: document.getElementById("vehicleModel").value.trim(),
+    vehicleYear: document.getElementById("vehicleYear").value.trim(),
+    vehicleColor: document.getElementById("vehicleColor").value.trim(),
+    vehicleVin: document.getElementById("vehicleVin").value.trim(),
     signedBy: document.getElementById("signedBy").value.trim(),
     deposit: document.getElementById("depositAmount").value,
-    serviceTotal: document.getElementById("serviceTotal").textContent,
+    labourTotal: document.getElementById("labourTotalInput").value,
     partsTotal: document.getElementById("partsTotal").textContent,
     subtotal: document.getElementById("subtotal").textContent,
     taxAmount: document.getElementById("taxAmount").textContent,
     grandTotal: document.getElementById("grandTotal").textContent,
-    services: [],
     parts: []
   };
   
-  document.querySelectorAll("#serviceBody tr").forEach(function(row) {
-    receipt.services.push({
-      desc: row.querySelector(".s-desc").value,
-      amt: row.querySelector(".s-amt").value
-    });
-  });
-  
   document.querySelectorAll("#partsBody tr").forEach(function(row) {
     receipt.parts.push({
-      qty: row.querySelector(".qty").value,
-      desc: row.querySelector(".desc").value,
-      unitPrice: row.querySelector(".unit-price").value,
-      amt: row.querySelector(".amt").value
+      desc: row.querySelector(".part-desc").value,
+      amt: row.querySelector(".part-amt").value
     });
   });
   
@@ -169,23 +125,23 @@ document.getElementById("saveBtn").addEventListener("click", function() {
   localStorage.setItem(INVOICE_KEY, receipt.invoiceNo);
 });
 
+// ===== LOAD RECEIPT =====
 function loadReceiptIntoForm(r) {
   document.getElementById("invoiceNo").value = r.invoiceNo;
   document.getElementById("custName").value = r.customer || "";
-  document.getElementById("vehicle").value = r.vehicle || "";
   document.getElementById("fromName").value = r.fromStaff || "";
+  document.getElementById("vehicleModel").value = r.vehicleModel || "";
+  document.getElementById("vehicleYear").value = r.vehicleYear || "";
+  document.getElementById("vehicleColor").value = r.vehicleColor || "";
+  document.getElementById("vehicleVin").value = r.vehicleVin || "";
   document.getElementById("signedBy").value = r.signedBy || "";
   document.getElementById("depositAmount").value = r.deposit || "0.00";
+  document.getElementById("labourTotalInput").value = r.labourTotal || "0.00";
   
-  document.getElementById("serviceBody").innerHTML = "";
   document.getElementById("partsBody").innerHTML = "";
   
-  if (r.services && r.services.length > 0) {
-    r.services.forEach(function(s) { addServiceRow(s.desc, s.amt); });
-  } else { addServiceRow(); }
-  
   if (r.parts && r.parts.length > 0) {
-    r.parts.forEach(function(p) { addPartRow(p.qty, p.desc, p.unitPrice, p.amt); });
+    r.parts.forEach(function(p) { addPartRow(p.desc, p.amt); });
   } else { addPartRow(); }
   
   calculateTotals();
@@ -193,6 +149,7 @@ function loadReceiptIntoForm(r) {
   alert("Loaded invoice #" + r.invoiceNo);
 }
 
+// ===== SEARCH RECEIPTS =====
 document.getElementById("searchBtn").addEventListener("click", function() {
   let query = document.getElementById("searchInput").value.trim().toLowerCase();
   let results = document.getElementById("searchResults");
@@ -212,7 +169,7 @@ document.getElementById("searchBtn").addEventListener("click", function() {
     let div = document.createElement("div");
     div.className = "found-receipt";
     div.innerHTML = '<strong>Invoice #' + r.invoiceNo + '</strong> | ' + r.date + '<br>' +
-                    'Customer: ' + r.customer + ' | Vehicle: ' + r.vehicle + '<br>' +
+                    'Customer: ' + r.customer + ' | Vehicle: ' + r.vehicleModel + ' ' + r.vehicleYear + '<br>' +
                     'From: ' + (r.fromStaff || "") + ' | Signed: ' + (r.signedBy || "N/A") + '<br>' +
                     'Deposit: $' + (r.deposit || "0.00") + ' | Grand Total: $' + r.grandTotal + '<br>' +
                     '<button class="viewBtn">Load Invoice</button> ' +
@@ -236,6 +193,7 @@ document.getElementById("searchBtn").addEventListener("click", function() {
   });
 });
 
+// ===== EXPORT RECEIPTS =====
 document.getElementById("exportBtn").addEventListener("click", function() {
   let receipts = JSON.parse(localStorage.getItem(RECEIPTS_KEY) || "[]");
   let data = { receipts: receipts };
@@ -249,6 +207,7 @@ document.getElementById("exportBtn").addEventListener("click", function() {
   alert("Exported " + receipts.length + " receipts!");
 });
 
+// ===== IMPORT RECEIPTS =====
 document.getElementById("importBtn").addEventListener("click", function() {
   document.getElementById("importFile").click();
 });
@@ -283,11 +242,13 @@ document.getElementById("importFile").addEventListener("change", function(event)
   reader.readAsText(file);
 });
 
+// ===== PRINT =====
 document.getElementById("printBtn").addEventListener("click", function() { 
   calculateTotals();
   window.print(); 
 });
 
+// ===== NEW INVOICE =====
 document.getElementById("newBtn").addEventListener("click", function() {
   let newNumber = (parseInt(currentInvoiceNo) + 1).toString().padStart(3, "0");
   document.getElementById("invoiceNo").value = newNumber;
@@ -295,18 +256,21 @@ document.getElementById("newBtn").addEventListener("click", function() {
   localStorage.setItem(INVOICE_KEY, currentInvoiceNo);
   
   document.getElementById("custName").value = "";
-  document.getElementById("vehicle").value = "";
   document.getElementById("fromName").value = "";
+  document.getElementById("vehicleModel").value = "";
+  document.getElementById("vehicleYear").value = "";
+  document.getElementById("vehicleColor").value = "";
+  document.getElementById("vehicleVin").value = "";
   document.getElementById("signedBy").value = "";
   document.getElementById("depositAmount").value = "0.00";
-  document.getElementById("serviceBody").innerHTML = "";
+  document.getElementById("labourTotalInput").value = "0.00";
   document.getElementById("partsBody").innerHTML = "";
   
-  addServiceRow();
   addPartRow();
   calculateTotals();
 });
 
+// ===== RESET INVOICE NO =====
 document.getElementById("resetBtn").addEventListener("click", function() {
   if (confirm("Reset invoice number back to 001?")) {
     document.getElementById("invoiceNo").value = "001";
@@ -315,6 +279,6 @@ document.getElementById("resetBtn").addEventListener("click", function() {
   }
 });
 
-addServiceRow();
+// ===== INITIALIZE =====
 addPartRow();
 calculateTotals();
