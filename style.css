@@ -477,4 +477,8 @@ button:hover {
   .header h2, .header p, .info label, h3, .totals div, .totals .subtotal, .totals .grand, .sign label {
     color: black !important;
   }
+  
+  .logos img {
+    filter: brightness(0) !important;
+  }
 }
