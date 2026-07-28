@@ -49,18 +49,24 @@ body {
   margin-bottom: 10px;
 }
 
+/* ===== LOGOS SECTION - UPDATED ===== */
 .logos {
-  margin-top: 5px;
+  margin-top: 10px;
   display: flex;
   justify-content: center;
-  gap: 15px;
+  align-items: center;
+  gap: 25px;
   flex-wrap: wrap;
+  padding: 5px 0;
 }
 
 .logos img {
   width: 55px;
-  height: auto;
+  height: 55px;
+  object-fit: contain;
+  display: block;
 }
+/* ===== END LOGOS SECTION ===== */
 
 .info {
   display: grid;
@@ -393,14 +399,20 @@ button:hover {
   font-size: 0.75rem;
 }
 
+/* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 600px) {
   .info {
     grid-template-columns: 1fr;
     gap: 6px;
   }
   
+  .logos {
+    gap: 15px;
+  }
+  
   .logos img {
     width: 40px;
+    height: 40px;
   }
   
   .actions {
@@ -452,6 +464,7 @@ button:hover {
   }
 }
 
+/* ===== PRINT STYLES ===== */
 @media print {
   button, .actions, .search-container, .delete-btn {
     display: none;
