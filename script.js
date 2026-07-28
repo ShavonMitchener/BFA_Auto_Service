@@ -57,9 +57,9 @@ function addPartRow(desc, amt) {
   let d = desc || "";
   let a = amt || "0.00";
   
-  row.innerHTML = '<td><textarea class="part-desc" placeholder="Part description" rows="2" style="width:100%; box-sizing:border-box;">' + d + '</textarea></td>' +
-                  '<td><input type="number" class="part-amt" min="0" step="any" value="' + a + '" style="width:95%; box-sizing:border-box; text-align:center;"></td>' +
-                  '<td><button class="delete-btn" style="margin:0 auto; display:block;">✖</button></td>';
+  row.innerHTML = '<td><textarea class="part-desc" placeholder="Part description" rows="2">' + d + '</textarea></td>' +
+                  '<td><input type="number" class="part-amt" min="0" step="any" value="' + a + '"></td>' +
+                  '<td><button class="delete-btn">✖</button></td>';
   
   body.appendChild(row);
   
