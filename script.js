@@ -22,12 +22,14 @@ function calculateTotals() {
   });
   
   let subtotal = serviceTotal + partsTotal;
+  let tax = subtotal * 0.07; // 7% tax
   let deposit = parseFloat(document.getElementById("depositAmount").value) || 0;
-  let grandTotal = subtotal - deposit;
+  let grandTotal = subtotal + tax - deposit;
   
   document.getElementById("serviceTotal").textContent = serviceTotal.toFixed(2);
   document.getElementById("partsTotal").textContent = partsTotal.toFixed(2);
   document.getElementById("subtotal").textContent = subtotal.toFixed(2);
+  document.getElementById("taxAmount").textContent = tax.toFixed(2);
   document.getElementById("grandTotal").textContent = grandTotal.toFixed(2);
   
   let depositSection = document.getElementById("depositSection");
@@ -73,7 +75,6 @@ function addServiceRow(desc, amt) {
   calculateTotals();
 }
 
-// ========== UPDATED: addPartRow with better column sizing ==========
 function addPartRow(qty, desc, unitPrice, amt) {
   let body = document.getElementById("partsBody");
   let row = document.createElement("tr");
@@ -124,6 +125,7 @@ document.getElementById("saveBtn").addEventListener("click", function() {
     serviceTotal: document.getElementById("serviceTotal").textContent,
     partsTotal: document.getElementById("partsTotal").textContent,
     subtotal: document.getElementById("subtotal").textContent,
+    taxAmount: document.getElementById("taxAmount").textContent,
     grandTotal: document.getElementById("grandTotal").textContent,
     services: [],
     parts: []
