@@ -4,15 +4,22 @@
 const INVOICE_KEY = "allCountryAuto_invoiceNo";
 const RECEIPTS_KEY = "allCountryAuto_receipts";
 
-// Set date
 document.getElementById("date").textContent = new Date().toLocaleDateString();
 
 let currentInvoiceNo = localStorage.getItem(INVOICE_KEY) || "001";
 document.getElementById("invoiceNo").value = currentInvoiceNo;
 
+// ===== AUTO-EXPAND TEXTAREA =====
 function autoExpand(textarea) {
   textarea.style.height = "auto";
-  textarea.style.height = Math.min(textarea.scrollHeight, 100) + "px";
+  textarea.style.height = Math.max(textarea.scrollHeight, 35) + "px";
+}
+
+// ===== EXPAND ALL TEXTAREAS =====
+function expandAllTextareas() {
+  document.querySelectorAll("textarea").forEach(function(ta) {
+    autoExpand(ta);
+  });
 }
 
 // ===== CALCULATE TOTALS =====
@@ -26,16 +33,14 @@ function calculateTotals() {
   });
   
   let subtotal = partsTotal;
-  let tax = subtotal * 0.07; // 7% tax
+  let tax = subtotal * 0.07;
   let deposit = parseFloat(document.getElementById("depositAmount").value) || 0;
   let grandTotal = subtotal + tax - deposit;
   
-  // Update the display
   document.getElementById("partsTotal").textContent = subtotal.toFixed(2);
   document.getElementById("taxAmount").textContent = tax.toFixed(2);
   document.getElementById("grandTotal").textContent = grandTotal.toFixed(2);
   
-  // Show/hide deposit section
   let depositSection = document.getElementById("depositSection");
   if (deposit === 0) {
     depositSection.classList.add("hide-on-print");
@@ -68,7 +73,7 @@ function addItemRow(desc, qty, rate, amt) {
   let r = rate || "0.00";
   let a = amt || "0.00";
   
-  row.innerHTML = '<td><textarea class="item-desc" placeholder="Item description" rows="2">' + d + '</textarea></td>' +
+  row.innerHTML = '<td><textarea class="item-desc" placeholder="Item description" rows="1">' + d + '</textarea></td>' +
                   '<td><input type="number" class="item-qty" min="0" step="any" value="' + q + '"></td>' +
                   '<td><input type="number" class="item-rate" min="0" step="any" value="' + r + '"></td>' +
                   '<td><input type="number" class="item-amt" min="0" step="any" value="' + a + '" readonly></td>' +
@@ -77,7 +82,10 @@ function addItemRow(desc, qty, rate, amt) {
   body.appendChild(row);
   
   let ta = row.querySelector("textarea");
-  ta.addEventListener("input", function() { autoExpand(this); });
+  ta.addEventListener("input", function() { 
+    autoExpand(this); 
+  });
+  // Auto-expand immediately
   autoExpand(ta);
   
   let qtyInput = row.querySelector(".item-qty");
@@ -92,46 +100,26 @@ function addItemRow(desc, qty, rate, amt) {
   calculateTotals();
 }
 
-// ===== MAKE SURE EVERYTHING LOADS PROPERLY =====
-window.onload = function() {
-  console.log("Page loaded - setting up event listeners");
-  
-  // Add Item button
-  var addBtn = document.getElementById("addPart");
-  if (addBtn) {
-    addBtn.onclick = function() {
-      console.log("Add Item clicked!");
-      addItemRow();
-    };
-  } else {
-    console.error("Add Part button not found!");
-  }
-  
-  // Deposit input
-  var depositInput = document.getElementById("depositAmount");
-  if (depositInput) {
-    depositInput.oninput = calculateTotals;
-  }
-  
-  // Test button
-  var testBtn = document.getElementById("testBtn");
-  if (testBtn) {
-    testBtn.onclick = function() {
-      document.getElementById("partsTotal").textContent = "2500.00";
-      let subtotal = 2500.00;
-      let tax = subtotal * 0.07;
-      document.getElementById("taxAmount").textContent = tax.toFixed(2);
-      let deposit = parseFloat(document.getElementById("depositAmount").value) || 0;
-      let grandTotal = subtotal + tax - deposit;
-      document.getElementById("grandTotal").textContent = grandTotal.toFixed(2);
-      alert("Test: Subtotal $2500.00 + Tax $" + tax.toFixed(2) + " = Total Due $" + grandTotal.toFixed(2));
-    };
-  }
-  
-  // Initialize with one row
-  addItemRow();
+// ===== EVENT LISTENERS =====
+document.getElementById("addPart").addEventListener("click", function() { 
+  addItemRow(); 
+  // Expand all textareas after adding
+  setTimeout(expandAllTextareas, 50);
+});
+
+document.getElementById("depositAmount").addEventListener("input", calculateTotals);
+
+// ===== PRINT =====
+document.getElementById("printBtn").addEventListener("click", function() { 
+  // Expand ALL textareas before printing
+  expandAllTextareas();
   calculateTotals();
-};
+  
+  // Small delay to ensure heights are applied
+  setTimeout(function() {
+    window.print();
+  }, 200);
+});
 
 // ===== SAVE RECEIPT =====
 document.getElementById("saveBtn").addEventListener("click", function() {
@@ -223,6 +211,9 @@ function loadReceiptIntoForm(r) {
   } else { 
     addItemRow(); 
   }
+  
+  // Expand all textareas after loading
+  setTimeout(expandAllTextareas, 100);
   
   calculateTotals();
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -325,12 +316,6 @@ document.getElementById("importFile").addEventListener("change", function(event)
   reader.readAsText(file);
 });
 
-// ===== PRINT =====
-document.getElementById("printBtn").addEventListener("click", function() { 
-  calculateTotals();
-  window.print(); 
-});
-
 // ===== NEW INVOICE =====
 document.getElementById("newBtn").addEventListener("click", function() {
   let newNumber = (parseInt(currentInvoiceNo) + 1).toString().padStart(3, "0");
@@ -381,3 +366,21 @@ document.getElementById("clearAllBtn").addEventListener("click", function() {
     location.reload();
   }
 });
+
+// ===== TEST TAX BUTTON =====
+document.getElementById("testBtn").addEventListener("click", function() {
+  document.getElementById("partsTotal").textContent = "2500.00";
+  let subtotal = 2500.00;
+  let tax = subtotal * 0.07;
+  document.getElementById("taxAmount").textContent = tax.toFixed(2);
+  let deposit = parseFloat(document.getElementById("depositAmount").value) || 0;
+  let grandTotal = subtotal + tax - deposit;
+  document.getElementById("grandTotal").textContent = grandTotal.toFixed(2);
+  alert("Test: Subtotal $2500.00 + Tax $" + tax.toFixed(2) + " = Total Due $" + grandTotal.toFixed(2));
+});
+
+// ===== INITIALIZE =====
+addItemRow();
+// Expand all textareas after page loads
+setTimeout(expandAllTextareas, 100);
+calculateTotals();
