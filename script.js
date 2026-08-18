@@ -402,28 +402,6 @@ document.getElementById("resetBtn").addEventListener("click", function() {
   }
 });
 
-// ===== CLEAR ALL RECEIPTS =====
-document.getElementById("clearAllBtn").addEventListener("click", function() {
-  if (confirm("⚠️ WARNING: This will delete ALL saved receipts. Are you absolutely sure?")) {
-    localStorage.removeItem(RECEIPTS_KEY);
-    localStorage.removeItem(INVOICE_KEY);
-    alert("All receipts have been cleared. Page will now reload.");
-    location.reload();
-  }
-});
-
-// ===== TEST TAX BUTTON =====
-document.getElementById("testBtn").addEventListener("click", function() {
-  document.getElementById("partsTotal").textContent = "2500.00";
-  let subtotal = 2500.00;
-  let tax = subtotal * 0.07;
-  document.getElementById("taxAmount").textContent = tax.toFixed(2);
-  let deposit = parseFloat(document.getElementById("depositAmount").value) || 0;
-  let grandTotal = subtotal + tax - deposit;
-  document.getElementById("grandTotal").textContent = grandTotal.toFixed(2);
-  alert("Test: Subtotal $2500.00 + Tax $" + tax.toFixed(2) + " = Total Due $" + grandTotal.toFixed(2));
-});
-
 // ===== INITIALIZE =====
 addItemRow();
 // Expand all textareas after page loads
