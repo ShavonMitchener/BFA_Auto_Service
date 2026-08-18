@@ -26,8 +26,27 @@
   <!-- ===== DIVIDER LINE ===== -->
   <hr class="section-divider">
 
-  <!-- ===== BILL TO SECTION (NEW) ===== -->
-  <div class="section-title">Bill To:</div>
+  <!-- ===== INVOICE NUMBER, DATE, DUE DATE (NEW POSITION) ===== -->
+  <div class="invoice-top">
+    <div class="invoice-field">
+      <label>Invoice #:</label>
+      <input type="text" id="invoiceNo" value="001">
+    </div>
+    <div class="invoice-field">
+      <label>Date:</label>
+      <span id="date"></span>
+    </div>
+    <div class="invoice-field">
+      <label>Due Date:</label>
+      <input type="date" id="dueDate">
+    </div>
+  </div>
+
+  <!-- ===== DIVIDER LINE ===== -->
+  <hr class="section-divider">
+
+  <!-- ===== BILL TO (BOLD) ===== -->
+  <div class="section-title-bold">Bill to</div>
   <div class="bill-to">
     <div><label>Customer Name:</label> <textarea id="custName" placeholder="Enter name" rows="1"></textarea></div>
     <div><label>Phone:</label> <input type="text" id="phone" placeholder="Enter phone" style="width:100%"></div>
@@ -38,8 +57,8 @@
   <!-- ===== DIVIDER LINE ===== -->
   <hr class="section-divider">
 
-  <!-- ===== VEHICLE INFORMATION SECTION (EXPANDED) ===== -->
-  <div class="section-title">Vehicle Information</div>
+  <!-- ===== VEHICLE INFORMATION (BOLD) ===== -->
+  <div class="section-title-bold">Vehicle Information</div>
   <div class="vehicle-info-grid">
     <div><label>Model:</label> <input type="text" id="vehicleModel" placeholder="Model" style="width:100%"></div>
     <div><label>License Plate:</label> <input type="text" id="licensePlate" placeholder="License plate" style="width:100%"></div>
@@ -48,13 +67,13 @@
     <div><label>Year:</label> <input type="text" id="vehicleYear" placeholder="Year" style="width:100%"></div>
     <div><label>Mileage:</label> <input type="text" id="vehicleMileage" placeholder="Mileage" style="width:100%"></div>
     <div><label>Color:</label> <input type="text" id="vehicleColor" placeholder="Color" style="width:100%"></div>
-    <div><label>RID / Job #:</label> <input type="text" id="jobNumber" placeholder="RID / Job #" style="width:100%"></div>
+    <div><label>RO / Job #:</label> <input type="text" id="jobNumber" placeholder="RO / Job #" style="width:100%"></div>
   </div>
 
   <!-- ===== DIVIDER LINE ===== -->
   <hr class="section-divider">
 
-  <!-- ===== PARTS SECTION (NOW ITEMS WITH 4 COLUMNS) ===== -->
+  <!-- ===== ITEMS TABLE ===== -->
   <h3>Items</h3>
   <table class="items" id="partsTable">
     <thead>
@@ -83,8 +102,8 @@
     <div class="grand">TOTAL DUE: $<span id="grandTotal">0.00</span></div>
   </div>
 
-  <!-- ===== PAYMENT / NOTES SECTION (NEW) ===== -->
-  <div class="payment-notes">
+  <!-- ===== PAYMENT METHOD & NOTES (SIDE BY SIDE) ===== -->
+  <div class="payment-notes-row">
     <div class="payment-method">
       <label>Payment Method:</label>
       <input type="text" id="paymentMethod" placeholder="Cash, Check, Credit Card" style="width:100%">
@@ -95,21 +114,23 @@
     </div>
   </div>
 
-  <!-- ===== THANK YOU (NEW) ===== -->
+  <!-- ===== THANK YOU ===== -->
   <div class="thank-you">
     Thank you for your business!
   </div>
 
-  <!-- ===== AUTHORIZATION SECTION (NEW) ===== -->
-  <div class="authorization">
-    <div class="section-title">AUTHORIZED BY</div>
-    <div class="signature-line">
-      <label>Signature:</label>
-      <input type="text" id="signedBy" placeholder="Enter signature" style="width:70%">
-    </div>
-    <div class="date-line">
-      <label>Date:</label>
-      <input type="date" id="authDate">
+  <!-- ===== AUTHORIZATION (SIDE BY SIDE WITH PAYMENT METHOD) ===== -->
+  <div class="auth-row">
+    <div class="auth-signature">
+      <label>AUTHORIZED BY</label>
+      <div class="signature-line">
+        <label>Signature:</label>
+        <input type="text" id="signedBy" placeholder="Enter signature" style="width:70%">
+      </div>
+      <div class="date-line">
+        <label>Date:</label>
+        <input type="date" id="authDate">
+      </div>
     </div>
   </div>
 
