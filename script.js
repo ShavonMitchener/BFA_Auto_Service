@@ -4,6 +4,7 @@
 const INVOICE_KEY = "allCountryAuto_invoiceNo";
 const RECEIPTS_KEY = "allCountryAuto_receipts";
 
+// Set date
 document.getElementById("date").textContent = new Date().toLocaleDateString();
 
 let currentInvoiceNo = localStorage.getItem(INVOICE_KEY) || "001";
@@ -41,12 +42,6 @@ function calculateTotals() {
   } else {
     depositSection.classList.remove("hide-on-print");
   }
-  
-  // Debug log to check values
-  console.log("Subtotal: $" + subtotal.toFixed(2));
-  console.log("Tax (7%): $" + tax.toFixed(2));
-  console.log("Deposit: $" + deposit.toFixed(2));
-  console.log("Total Due: $" + grandTotal.toFixed(2));
 }
 
 function deleteRow(btn) {
@@ -97,29 +92,31 @@ function addItemRow(desc, qty, rate, amt) {
   calculateTotals();
 }
 
-// ===== EVENT LISTENERS - MAKE SURE ADD ITEM WORKS =====
-document.addEventListener("DOMContentLoaded", function() {
+// ===== MAKE SURE EVERYTHING LOADS PROPERLY =====
+window.onload = function() {
+  console.log("Page loaded - setting up event listeners");
+  
   // Add Item button
-  const addPartBtn = document.getElementById("addPart");
-  if (addPartBtn) {
-    addPartBtn.addEventListener("click", function() { 
-      addItemRow(); 
-    });
+  var addBtn = document.getElementById("addPart");
+  if (addBtn) {
+    addBtn.onclick = function() {
+      console.log("Add Item clicked!");
+      addItemRow();
+    };
   } else {
     console.error("Add Part button not found!");
   }
   
   // Deposit input
-  const depositInput = document.getElementById("depositAmount");
+  var depositInput = document.getElementById("depositAmount");
   if (depositInput) {
-    depositInput.addEventListener("input", calculateTotals);
+    depositInput.oninput = calculateTotals;
   }
   
   // Test button
-  const testBtn = document.getElementById("testBtn");
+  var testBtn = document.getElementById("testBtn");
   if (testBtn) {
-    testBtn.addEventListener("click", function() {
-      // Manually set test values
+    testBtn.onclick = function() {
       document.getElementById("partsTotal").textContent = "2500.00";
       let subtotal = 2500.00;
       let tax = subtotal * 0.07;
@@ -128,13 +125,13 @@ document.addEventListener("DOMContentLoaded", function() {
       let grandTotal = subtotal + tax - deposit;
       document.getElementById("grandTotal").textContent = grandTotal.toFixed(2);
       alert("Test: Subtotal $2500.00 + Tax $" + tax.toFixed(2) + " = Total Due $" + grandTotal.toFixed(2));
-    });
+    };
   }
   
   // Initialize with one row
   addItemRow();
   calculateTotals();
-});
+};
 
 // ===== SAVE RECEIPT =====
 document.getElementById("saveBtn").addEventListener("click", function() {
