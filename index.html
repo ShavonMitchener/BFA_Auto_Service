@@ -46,7 +46,7 @@
   <hr class="section-divider">
 
   <!-- ===== BILL TO ===== -->
-  <div class="section-title-bold">Bill To</div>
+  <div class="section-title-bold">Bill to</div>
   <div class="bill-to">
     <div><label>Customer Name:</label> <textarea id="custName" placeholder="Enter name" rows="1"></textarea></div>
     <div><label>Phone:</label> <input type="text" id="phone" placeholder="Enter phone" style="width:100%"></div>
@@ -73,7 +73,7 @@
   <!-- ===== DIVIDER LINE ===== -->
   <hr class="section-divider">
 
-  <!-- ===== ITEMS TABLE (No "Items" heading) ===== -->
+  <!-- ===== ITEMS TABLE ===== -->
   <table class="items" id="partsTable">
     <thead>
       <tr>
@@ -102,7 +102,7 @@
     <div class="grand">TOTAL DUE: $<span id="grandTotal">0.00</span></div>
   </div>
 
-  <!-- ===== PAYMENT METHOD & NOTES (SIDE BY SIDE) ===== -->
+  <!-- ===== PAYMENT & NOTES ===== -->
   <div class="payment-notes-row">
     <div class="payment-method">
       <label>Payment Method:</label>
@@ -114,7 +114,7 @@
     </div>
   </div>
 
-  <!-- ===== AUTHORIZATION (SIDE BY SIDE WITH PAYMENT METHOD) ===== -->
+  <!-- ===== AUTHORIZATION ===== -->
   <div class="auth-row">
     <div class="auth-signature">
       <label>AUTHORIZED BY</label>
@@ -141,6 +141,7 @@
     <button id="exportBtn">📁 Export Receipts</button>
     <button id="importBtn">📂 Import Receipts</button>
     <button id="clearAllBtn" style="background:#ff4444; color:white;">🗑️ Clear All Receipts</button>
+    <button id="testBtn" style="background:#ffaa00; color:#000;">Test Tax</button>
   </div>
 </div>
 
