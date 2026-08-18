@@ -97,9 +97,44 @@ function addItemRow(desc, qty, rate, amt) {
   calculateTotals();
 }
 
-// ===== EVENT LISTENERS =====
-document.getElementById("addPart").addEventListener("click", function() { addItemRow(); });
-document.getElementById("depositAmount").addEventListener("input", calculateTotals);
+// ===== EVENT LISTENERS - MAKE SURE ADD ITEM WORKS =====
+document.addEventListener("DOMContentLoaded", function() {
+  // Add Item button
+  const addPartBtn = document.getElementById("addPart");
+  if (addPartBtn) {
+    addPartBtn.addEventListener("click", function() { 
+      addItemRow(); 
+    });
+  } else {
+    console.error("Add Part button not found!");
+  }
+  
+  // Deposit input
+  const depositInput = document.getElementById("depositAmount");
+  if (depositInput) {
+    depositInput.addEventListener("input", calculateTotals);
+  }
+  
+  // Test button
+  const testBtn = document.getElementById("testBtn");
+  if (testBtn) {
+    testBtn.addEventListener("click", function() {
+      // Manually set test values
+      document.getElementById("partsTotal").textContent = "2500.00";
+      let subtotal = 2500.00;
+      let tax = subtotal * 0.07;
+      document.getElementById("taxAmount").textContent = tax.toFixed(2);
+      let deposit = parseFloat(document.getElementById("depositAmount").value) || 0;
+      let grandTotal = subtotal + tax - deposit;
+      document.getElementById("grandTotal").textContent = grandTotal.toFixed(2);
+      alert("Test: Subtotal $2500.00 + Tax $" + tax.toFixed(2) + " = Total Due $" + grandTotal.toFixed(2));
+    });
+  }
+  
+  // Initialize with one row
+  addItemRow();
+  calculateTotals();
+});
 
 // ===== SAVE RECEIPT =====
 document.getElementById("saveBtn").addEventListener("click", function() {
@@ -195,7 +230,7 @@ function loadReceiptIntoForm(r) {
   calculateTotals();
   window.scrollTo({ top: 0, behavior: "smooth" });
   alert("Loaded invoice #" + r.invoiceNo);
-});
+}
 
 // ===== SEARCH RECEIPTS =====
 document.getElementById("searchBtn").addEventListener("click", function() {
@@ -349,20 +384,3 @@ document.getElementById("clearAllBtn").addEventListener("click", function() {
     location.reload();
   }
 });
-
-// ===== TEST TAX BUTTON =====
-document.getElementById("testBtn").addEventListener("click", function() {
-  // Manually set test values
-  document.getElementById("partsTotal").textContent = "2500.00";
-  let subtotal = 2500.00;
-  let tax = subtotal * 0.07;
-  document.getElementById("taxAmount").textContent = tax.toFixed(2);
-  let deposit = parseFloat(document.getElementById("depositAmount").value) || 0;
-  let grandTotal = subtotal + tax - deposit;
-  document.getElementById("grandTotal").textContent = grandTotal.toFixed(2);
-  alert("Test: Subtotal $2500.00 + Tax $" + tax.toFixed(2) + " = Total Due $" + grandTotal.toFixed(2));
-});
-
-// ===== INITIALIZE =====
-addItemRow();
-calculateTotals();
