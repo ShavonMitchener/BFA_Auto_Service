@@ -699,7 +699,7 @@ button:hover {
   }
 }
 
-/* ===== PRINT STYLES ===== */
+/* ===== PRINT - REPLACE TEXTAREAS WITH DIVS ===== */
 @media print {
   @page {
     margin: 0.5in;
@@ -769,7 +769,8 @@ button:hover {
   .totals .tax span,
   .totals .grand span,
   .deposit-section label,
-  .deposit-section input {
+  .deposit-section input,
+  .print-text {
     color: black !important;
   }
   
@@ -785,33 +786,26 @@ button:hover {
     background: #eee !important;
   }
   
-  /* ===== FIX: TEXTAREAS SHOW FULL CONTENT ===== */
-  textarea,
-  .item-desc {
+  /* ===== PRINT TEXT - SHOW FULL CONTENT ===== */
+  .print-text {
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+    word-break: break-word !important;
+    background: transparent !important;
     border: none !important;
     border-bottom: 1px solid #999 !important;
-    background: transparent !important;
-    color: black !important;
-    resize: none !important;
-    overflow: visible !important;
-    box-shadow: none !important;
-    outline: none !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
     padding: 2px 5px !important;
     font-family: 'Courier Prime', monospace !important;
     font-size: 11pt !important;
     font-weight: bold !important;
-    text-align: left !important;
-    height: auto !important;
-    min-height: auto !important;
-    max-height: none !important;
-    white-space: pre-wrap !important;
-    word-wrap: break-word !important;
-    word-break: break-word !important;
+    color: black !important;
+    line-height: 1.4 !important;
     display: block !important;
     width: 100% !important;
-    line-height: 1.4 !important;
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0 !important;
+    overflow: visible !important;
   }
   
   /* Fix for inputs */
