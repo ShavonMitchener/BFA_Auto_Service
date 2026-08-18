@@ -1,5 +1,5 @@
 // ============================================
-// UNIQUE KEYS FOR ALL COUNTRY AUTO
+// UNIQUE KEYS FOR ALL COUNTY AUTO
 // ============================================
 const INVOICE_KEY = "allCountryAuto_invoiceNo";
 const RECEIPTS_KEY = "allCountryAuto_receipts";
@@ -25,18 +25,28 @@ function calculateTotals() {
   });
   
   let subtotal = partsTotal;
+  let tax = subtotal * 0.07; // 7% tax
   let deposit = parseFloat(document.getElementById("depositAmount").value) || 0;
-  let grandTotal = subtotal - deposit;
+  let grandTotal = subtotal + tax - deposit;
   
-  document.getElementById("partsTotal").textContent = partsTotal.toFixed(2);
+  // Update the display
+  document.getElementById("partsTotal").textContent = subtotal.toFixed(2);
+  document.getElementById("taxAmount").textContent = tax.toFixed(2);
   document.getElementById("grandTotal").textContent = grandTotal.toFixed(2);
   
+  // Show/hide deposit section
   let depositSection = document.getElementById("depositSection");
   if (deposit === 0) {
     depositSection.classList.add("hide-on-print");
   } else {
     depositSection.classList.remove("hide-on-print");
   }
+  
+  // Debug log to check values
+  console.log("Subtotal: $" + subtotal.toFixed(2));
+  console.log("Tax (7%): $" + tax.toFixed(2));
+  console.log("Deposit: $" + deposit.toFixed(2));
+  console.log("Total Due: $" + grandTotal.toFixed(2));
 }
 
 function deleteRow(btn) {
@@ -117,6 +127,7 @@ document.getElementById("saveBtn").addEventListener("click", function() {
     notes: document.getElementById("notes").value.trim(),
     deposit: document.getElementById("depositAmount").value,
     partsTotal: document.getElementById("partsTotal").textContent,
+    taxAmount: document.getElementById("taxAmount").textContent,
     grandTotal: document.getElementById("grandTotal").textContent,
     items: []
   };
@@ -184,7 +195,7 @@ function loadReceiptIntoForm(r) {
   calculateTotals();
   window.scrollTo({ top: 0, behavior: "smooth" });
   alert("Loaded invoice #" + r.invoiceNo);
-}
+});
 
 // ===== SEARCH RECEIPTS =====
 document.getElementById("searchBtn").addEventListener("click", function() {
@@ -337,6 +348,19 @@ document.getElementById("clearAllBtn").addEventListener("click", function() {
     alert("All receipts have been cleared. Page will now reload.");
     location.reload();
   }
+});
+
+// ===== TEST TAX BUTTON =====
+document.getElementById("testBtn").addEventListener("click", function() {
+  // Manually set test values
+  document.getElementById("partsTotal").textContent = "2500.00";
+  let subtotal = 2500.00;
+  let tax = subtotal * 0.07;
+  document.getElementById("taxAmount").textContent = tax.toFixed(2);
+  let deposit = parseFloat(document.getElementById("depositAmount").value) || 0;
+  let grandTotal = subtotal + tax - deposit;
+  document.getElementById("grandTotal").textContent = grandTotal.toFixed(2);
+  alert("Test: Subtotal $2500.00 + Tax $" + tax.toFixed(2) + " = Total Due $" + grandTotal.toFixed(2));
 });
 
 // ===== INITIALIZE =====
