@@ -26,7 +26,7 @@
   <!-- ===== DIVIDER LINE ===== -->
   <hr class="section-divider">
 
-  <!-- ===== INVOICE NUMBER, DATE, DUE DATE (NEW POSITION) ===== -->
+  <!-- ===== INVOICE NUMBER, DATE, DUE DATE ===== -->
   <div class="invoice-top">
     <div class="invoice-field">
       <label>Invoice #:</label>
@@ -45,7 +45,7 @@
   <!-- ===== DIVIDER LINE ===== -->
   <hr class="section-divider">
 
-  <!-- ===== BILL TO (BOLD) ===== -->
+  <!-- ===== BILL TO ===== -->
   <div class="section-title-bold">Bill to</div>
   <div class="bill-to">
     <div><label>Customer Name:</label> <textarea id="custName" placeholder="Enter name" rows="1"></textarea></div>
@@ -57,7 +57,7 @@
   <!-- ===== DIVIDER LINE ===== -->
   <hr class="section-divider">
 
-  <!-- ===== VEHICLE INFORMATION (BOLD) ===== -->
+  <!-- ===== VEHICLE INFORMATION ===== -->
   <div class="section-title-bold">Vehicle Information</div>
   <div class="vehicle-info-grid">
     <div><label>Model:</label> <input type="text" id="vehicleModel" placeholder="Model" style="width:100%"></div>
@@ -73,8 +73,7 @@
   <!-- ===== DIVIDER LINE ===== -->
   <hr class="section-divider">
 
-  <!-- ===== ITEMS TABLE ===== -->
-  <h3>Items</h3>
+  <!-- ===== ITEMS TABLE (No "Items" heading) ===== -->
   <table class="items" id="partsTable">
     <thead>
       <tr>
@@ -95,6 +94,7 @@
   <!-- ===== TOTALS SECTION ===== -->
   <div class="totals">
     <div class="parts-total">Subtotal: $<span id="partsTotal">0.00</span></div>
+    <div class="tax">TAX (7%): $<span id="taxAmount">0.00</span></div>
     <div class="deposit-section" id="depositSection">
       <label>DEPOSIT: $</label>
       <input type="number" id="depositAmount" min="0" step="0.01" value="0.00">
@@ -112,11 +112,6 @@
       <label>Notes:</label>
       <textarea id="notes" placeholder="Additional notes" rows="2"></textarea>
     </div>
-  </div>
-
-  <!-- ===== THANK YOU ===== -->
-  <div class="thank-you">
-    Thank you for your business!
   </div>
 
   <!-- ===== AUTHORIZATION (SIDE BY SIDE WITH PAYMENT METHOD) ===== -->
