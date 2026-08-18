@@ -109,16 +109,61 @@ document.getElementById("addPart").addEventListener("click", function() {
 
 document.getElementById("depositAmount").addEventListener("input", calculateTotals);
 
-// ===== PRINT =====
-document.getElementById("printBtn").addEventListener("click", function() { 
-  // Expand ALL textareas before printing
-  expandAllTextareas();
+// ===== PRINT - REPLACE TEXTAREAS WITH DIVS =====
+document.getElementById("printBtn").addEventListener("click", function() {
+  // Replace ALL textareas with divs containing their content
+  var textareas = document.querySelectorAll("textarea");
+  
+  textareas.forEach(function(ta) {
+    var content = ta.value || ta.textContent || "";
+    var div = document.createElement("div");
+    div.className = ta.className + " print-text";
+    div.textContent = content;
+    
+    // Copy the style - make it show all content
+    div.style.whiteSpace = "pre-wrap";
+    div.style.wordWrap = "break-word";
+    div.style.wordBreak = "break-word";
+    div.style.background = "transparent";
+    div.style.border = "none";
+    div.style.borderBottom = "1px solid #999";
+    div.style.padding = "2px 5px";
+    div.style.fontFamily = "'Courier Prime', monospace";
+    div.style.fontSize = "11pt";
+    div.style.fontWeight = "bold";
+    div.style.color = "black";
+    div.style.lineHeight = "1.4";
+    div.style.height = "auto";
+    div.style.overflow = "visible";
+    div.style.minHeight = "0";
+    div.style.maxHeight = "none";
+    div.style.display = "block";
+    div.style.width = "100%";
+    
+    // Store the textarea for later restoration
+    ta.dataset.content = content;
+    ta.style.display = "none";
+    ta.parentNode.insertBefore(div, ta);
+  });
+  
   calculateTotals();
   
-  // Small delay to ensure heights are applied
   setTimeout(function() {
     window.print();
-  }, 200);
+    // Restore textareas after printing
+    setTimeout(function() {
+      document.querySelectorAll(".print-text").forEach(function(div) {
+        var parent = div.parentNode;
+        var ta = parent.querySelector("textarea");
+        if (ta) {
+          ta.style.display = "";
+          div.remove();
+          // Re-apply auto-expand
+          autoExpand(ta);
+        }
+      });
+    }, 100);
+  }, 300);
 });
 
 // ===== SAVE RECEIPT =====
