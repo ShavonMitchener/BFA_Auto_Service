@@ -195,13 +195,6 @@ body {
 }
 
 /* ===== ITEMS TABLE ===== */
-h3 {
-  margin-top: 5px;
-  margin-bottom: 8px;
-  font-size: 0.9rem;
-  color: #ffffff;
-}
-
 table {
   width: 100%;
   border-collapse: collapse;
@@ -221,24 +214,25 @@ th {
   color: #ffffff;
 }
 
+/* DESCRIPTION WIDER, OTHER COLUMNS NARROWER */
 #partsTable th:first-child,
 #partsTable td:first-child {
-  width: 45%;
+  width: 55%;
 }
 
 #partsTable th:nth-child(2),
 #partsTable td:nth-child(2) {
-  width: 12%;
+  width: 8%;
 }
 
 #partsTable th:nth-child(3),
 #partsTable td:nth-child(3) {
-  width: 18%;
+  width: 15%;
 }
 
 #partsTable th:nth-child(4),
 #partsTable td:nth-child(4) {
-  width: 18%;
+  width: 15%;
 }
 
 #partsTable th:last-child,
@@ -263,11 +257,11 @@ th {
   min-height: 30px;
 }
 
-/* Item quantity, rate, amount inputs */
+/* Item quantity, rate, amount inputs - smaller width */
 .item-qty,
 .item-rate,
 .item-amt {
-  width: 90%;
+  width: 80%;
   border: none;
   padding: 3px;
   text-align: center !important;
@@ -356,6 +350,20 @@ button:hover {
   display: inline-block;
 }
 
+.totals .tax {
+  font-weight: bold;
+  color: #ffaa00;
+  border-bottom: 1px solid #444;
+  padding-bottom: 3px;
+  margin-bottom: 5px;
+}
+
+.totals .tax span {
+  min-width: 100px;
+  text-align: right;
+  display: inline-block;
+}
+
 .deposit-section {
   margin-top: 5px;
   padding: 5px 10px;
@@ -401,7 +409,7 @@ button:hover {
   display: inline-block;
 }
 
-/* ===== PAYMENT & NOTES SECTION ===== */
+/* ===== PAYMENT & NOTES SECTION (SIDE BY SIDE) ===== */
 .payment-notes-row {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -435,18 +443,6 @@ button:hover {
   outline: none;
   background: #4a4a4a;
   border-color: #777;
-}
-
-/* ===== THANK YOU ===== */
-.thank-you {
-  text-align: center;
-  font-weight: bold;
-  font-size: 1rem;
-  margin: 15px 0 10px 0;
-  padding: 5px;
-  border-top: 1px solid #444;
-  border-bottom: 1px solid #444;
-  color: #ffffff;
 }
 
 /* ===== AUTHORIZATION ===== */
@@ -694,14 +690,13 @@ button:hover {
   .bill-to input,
   .vehicle-info-grid label,
   .vehicle-info-grid input,
-  h3,
   .totals div,
   .totals .parts-total,
+  .totals .tax,
   .totals .grand,
   .payment-notes-row label,
   .payment-notes-row textarea,
   .payment-notes-row input,
-  .thank-you,
   .auth-signature label,
   .auth-signature input,
   .item-desc,
@@ -711,6 +706,7 @@ button:hover {
   #date,
   #invoiceNo,
   .totals .parts-total span,
+  .totals .tax span,
   .totals .grand span,
   .deposit-section label,
   .deposit-section input {
@@ -820,6 +816,11 @@ button:hover {
   }
   
   /* Borders for totals - clean print */
+  .totals .tax {
+    border-bottom: 1px solid black !important;
+    color: black !important;
+  }
+  
   .totals .grand {
     border-top: 2px solid black !important;
   }
@@ -833,4 +834,11 @@ button:hover {
     white-space: nowrap !important;
   }
   
-  .
+  .totals .parts-total span,
+  .totals .tax span,
+  .totals .grand span {
+    min-width: 100px !important;
+    text-align: right !important;
+    display: inline-block !important;
+  }
+}
