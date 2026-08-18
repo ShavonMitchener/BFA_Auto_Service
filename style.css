@@ -216,31 +216,42 @@ th {
   font-size: 0.95rem;
 }
 
+/* ===== TABLE COLUMN WIDTHS - FIXED FOR NUMBERS ===== */
+#partsTable {
+  width: 100%;
+  table-layout: fixed;
+}
+
 #partsTable th:first-child,
 #partsTable td:first-child {
-  width: 55%;
+  width: 40%;
 }
 
 #partsTable th:nth-child(2),
 #partsTable td:nth-child(2) {
-  width: 8%;
+  width: 15%;
+  text-align: center;
 }
 
 #partsTable th:nth-child(3),
 #partsTable td:nth-child(3) {
-  width: 15%;
+  width: 20%;
+  text-align: center;
 }
 
 #partsTable th:nth-child(4),
 #partsTable td:nth-child(4) {
-  width: 15%;
+  width: 20%;
+  text-align: center;
 }
 
 #partsTable th:last-child,
 #partsTable td:last-child {
-  width: 7%;
+  width: 5%;
+  text-align: center;
 }
 
+/* ===== ITEM DESCRIPTION ===== */
 .item-desc {
   width: 100%;
   border: none;
@@ -255,12 +266,15 @@ th {
   background: transparent;
   color: #ffffff;
   min-height: 35px;
+  height: auto;
+  overflow: visible;
 }
 
+/* ===== QTY, RATE, AMOUNT INPUTS ===== */
 .item-qty,
 .item-rate,
 .item-amt {
-  width: 80%;
+  width: 95%;
   border: none;
   padding: 4px;
   text-align: center !important;
@@ -279,6 +293,7 @@ th {
   color: #ffcc00;
 }
 
+/* ===== DELETE BUTTON ===== */
 .delete-btn {
   background: #ff4444;
   color: white;
@@ -641,6 +656,32 @@ button:hover {
     flex-direction: column;
     align-items: flex-start;
   }
+  
+  /* Mobile table adjustments */
+  #partsTable th:first-child,
+  #partsTable td:first-child {
+    width: 30%;
+  }
+  
+  #partsTable th:nth-child(2),
+  #partsTable td:nth-child(2) {
+    width: 15%;
+  }
+  
+  #partsTable th:nth-child(3),
+  #partsTable td:nth-child(3) {
+    width: 20%;
+  }
+  
+  #partsTable th:nth-child(4),
+  #partsTable td:nth-child(4) {
+    width: 20%;
+  }
+  
+  #partsTable th:last-child,
+  #partsTable td:last-child {
+    width: 15%;
+  }
 }
 
 /* ===== PRINT STYLES ===== */
@@ -728,24 +769,9 @@ button:hover {
     background: #eee !important;
   }
   
-  /* ===== REMOVE ALL BOXES ON PRINT - SHOW ALL TEXT ===== */
+  /* ===== FIX: REMOVE ALL TEXTAREA HEIGHT RESTRICTIONS ===== */
   textarea,
-  input,
-  .item-qty,
-  .item-rate,
-  .item-amt,
-  #invoiceNo,
-  .deposit-section input,
-  .bill-to textarea,
-  .bill-to input,
-  .vehicle-info-grid input,
-  .search-container textarea,
-  .payment-notes-row textarea,
-  .payment-notes-row input,
-  .auth-signature input,
-  #date,
-  .invoice-field input,
-  .invoice-field span {
+  .item-desc {
     border: none !important;
     border-bottom: 1px solid #999 !important;
     background: transparent !important;
@@ -761,11 +787,45 @@ button:hover {
     font-size: 11pt !important;
     font-weight: bold !important;
     text-align: left !important;
-    min-height: auto !important;
+    min-height: 0 !important;
     height: auto !important;
+    max-height: none !important;
     white-space: pre-wrap !important;
     word-wrap: break-word !important;
     word-break: break-word !important;
+    display: block !important;
+    width: 100% !important;
+  }
+  
+  /* Fix for inputs */
+  input,
+  .item-qty,
+  .item-rate,
+  .item-amt,
+  #invoiceNo,
+  .deposit-section input,
+  .bill-to input,
+  .vehicle-info-grid input,
+  .payment-notes-row input,
+  .auth-signature input,
+  .invoice-field input {
+    border: none !important;
+    border-bottom: 1px solid #999 !important;
+    background: transparent !important;
+    color: black !important;
+    resize: none !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    outline: none !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    padding: 2px 5px !important;
+    font-family: 'Courier Prime', monospace !important;
+    font-size: 11pt !important;
+    font-weight: bold !important;
+    text-align: left !important;
+    min-height: 0 !important;
+    height: auto !important;
   }
   
   .item-qty,
@@ -774,20 +834,10 @@ button:hover {
     text-align: center !important;
   }
   
-  /* Item description - show ALL content */
-  .item-desc {
-    border: none !important;
-    background: transparent !important;
-    color: black !important;
-    padding: 2px !important;
-    height: auto !important;
-    min-height: auto !important;
+  /* Force all table cells to show full content */
+  td {
+    vertical-align: top !important;
     overflow: visible !important;
-    white-space: pre-wrap !important;
-    word-wrap: break-word !important;
-    word-break: break-word !important;
-    font-size: 11pt !important;
-    line-height: 1.5 !important;
   }
   
   /* ===== DEPOSIT SECTION ===== */
@@ -853,5 +903,16 @@ button:hover {
     min-width: 100px !important;
     text-align: right !important;
     display: inline-block !important;
+  }
+  
+  /* Fix for spans in invoice fields */
+  .invoice-field span {
+    border: none !important;
+    border-bottom: 1px solid #999 !important;
+    background: transparent !important;
+    color: black !important;
+    padding: 2px 5px !important;
+    font-size: 11pt !important;
+    font-weight: bold !important;
   }
 }
