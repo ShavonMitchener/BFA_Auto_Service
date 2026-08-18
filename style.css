@@ -8,7 +8,7 @@ body {
   margin: 0;
   padding: 10px;
   color: #ffffff;
-  font-size: 17px; /* Added - base size increased from default 16px */
+  font-size: 17px;
 }
 
 .invoice-container {
@@ -35,14 +35,14 @@ body {
 
 .header h2 {
   margin: 0 0 8px 0;
-  font-size: 1.4rem; /* Was 1.2rem - larger */
+  font-size: 1.4rem;
   color: #ffffff;
   letter-spacing: 2px;
 }
 
 .header p {
   margin: 0;
-  font-size: 0.9rem; /* Was 0.8rem - larger */
+  font-size: 0.9rem;
   color: #cccccc;
   line-height: 1.6;
 }
@@ -67,13 +67,13 @@ body {
 }
 
 .logos img {
-  width: 60px; /* Was 55px - slightly larger */
+  width: 60px;
   height: 60px;
   object-fit: contain;
   display: block;
 }
 
-/* ===== INVOICE TOP (Invoice #, Date, Due Date) ===== */
+/* ===== INVOICE TOP ===== */
 .invoice-top {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -89,14 +89,14 @@ body {
 
 .invoice-field label {
   font-weight: bold;
-  font-size: 0.95rem; /* Was 0.85rem - larger */
+  font-size: 0.95rem;
   color: #ffffff;
   white-space: nowrap;
 }
 
 .invoice-field input,
 .invoice-field span {
-  font-size: 0.95rem; /* Was 0.85rem - larger */
+  font-size: 0.95rem;
   font-family: 'Courier Prime', monospace;
   background: #3a3a3a;
   color: #ffffff;
@@ -118,7 +118,7 @@ body {
 /* ===== SECTION TITLE BOLD ===== */
 .section-title-bold {
   font-weight: bold;
-  font-size: 1.0rem; /* Was 0.9rem - larger */
+  font-size: 1.0rem;
   margin-top: 8px;
   margin-bottom: 8px;
   color: #ffffff;
@@ -136,7 +136,7 @@ body {
   font-weight: bold;
   display: block;
   margin-bottom: 2px;
-  font-size: 0.9rem; /* Was 0.8rem - larger */
+  font-size: 0.9rem;
   color: #ffffff;
 }
 
@@ -145,7 +145,7 @@ body {
   width: 100%;
   border: 2px solid #555;
   padding: 6px 8px;
-  font-size: 0.95rem; /* Was 0.85rem - larger */
+  font-size: 0.95rem;
   font-family: 'Courier Prime', monospace;
   resize: vertical;
   background: #3a3a3a;
@@ -173,7 +173,7 @@ body {
   font-weight: bold;
   display: block;
   margin-bottom: 2px;
-  font-size: 0.85rem; /* Was 0.75rem - larger */
+  font-size: 0.85rem;
   color: #ffffff;
 }
 
@@ -181,7 +181,7 @@ body {
   width: 100%;
   border: 2px solid #555;
   padding: 6px 8px;
-  font-size: 0.9rem; /* Was 0.8rem - larger */
+  font-size: 0.9rem;
   font-family: 'Courier Prime', monospace;
   background: #3a3a3a;
   color: #ffffff;
@@ -205,7 +205,7 @@ table {
 th,
 td {
   border: 2px solid #444;
-  padding: 6px; /* Was 4px - more padding */
+  padding: 6px;
   vertical-align: top;
   color: #ffffff;
 }
@@ -213,10 +213,9 @@ td {
 th {
   background: #3a3a3a;
   color: #ffffff;
-  font-size: 0.95rem; /* Added - larger headers */
+  font-size: 0.95rem;
 }
 
-/* DESCRIPTION WIDER, OTHER COLUMNS NARROWER */
 #partsTable th:first-child,
 #partsTable td:first-child {
   width: 55%;
@@ -242,13 +241,12 @@ th {
   width: 7%;
 }
 
-/* Item description textarea */
 .item-desc {
   width: 100%;
   border: none;
   padding: 4px;
   font-family: 'Courier Prime', monospace;
-  font-size: 0.95rem; /* Was 0.85rem - larger */
+  font-size: 0.95rem;
   resize: vertical;
   white-space: pre-wrap;
   word-wrap: break-word;
@@ -256,19 +254,18 @@ th {
   line-height: 1.5;
   background: transparent;
   color: #ffffff;
-  min-height: 35px; /* Was 30px - larger */
+  min-height: 35px;
 }
 
-/* Item quantity, rate, amount inputs - smaller width */
 .item-qty,
 .item-rate,
 .item-amt {
   width: 80%;
   border: none;
-  padding: 4px; /* Was 3px - larger */
+  padding: 4px;
   text-align: center !important;
   font-family: 'Courier Prime', monospace;
-  font-size: 0.95rem; /* Was 0.85rem - larger */
+  font-size: 0.95rem;
   background: #3a3a3a;
   color: #ffffff;
   font-weight: bold;
@@ -287,9 +284,9 @@ th {
   color: white;
   border: none;
   border-radius: 50%;
-  width: 26px; /* Was 24px - larger */
+  width: 26px;
   height: 26px;
-  font-size: 13px; /* Was 12px - larger */
+  font-size: 13px;
   cursor: pointer;
   text-align: center;
   line-height: 1;
@@ -312,13 +309,13 @@ input:focus {
 }
 
 button {
-  padding: 7px 16px; /* Was 6px 14px - larger */
+  padding: 7px 16px;
   margin: 3px;
   cursor: pointer;
   border: 1px solid #555;
   background: #3a3a3a;
   font-family: 'Courier Prime', monospace;
-  font-size: 0.9rem; /* Was 0.8rem - larger */
+  font-size: 0.9rem;
   color: #ffffff;
   border-radius: 3px;
 }
@@ -338,7 +335,7 @@ button:hover {
 
 .totals div {
   margin-bottom: 3px;
-  font-size: 0.95rem; /* Was 0.85rem - larger */
+  font-size: 0.95rem;
   color: #ffffff;
   display: flex;
   justify-content: space-between;
@@ -382,15 +379,15 @@ button:hover {
 .deposit-section label {
   font-weight: bold;
   color: #ff6666;
-  font-size: 0.95rem; /* Added */
+  font-size: 0.95rem;
 }
 
 .deposit-section input {
-  width: 110px; /* Was 100px - larger */
+  width: 110px;
   padding: 5px;
   border: 1px solid #883333;
   font-family: 'Courier Prime', monospace;
-  font-size: 0.95rem; /* Added */
+  font-size: 0.95rem;
   text-align: right;
   background: #3a3a3a;
   color: #ffffff;
@@ -400,7 +397,7 @@ button:hover {
 
 .totals .grand {
   font-weight: bold;
-  font-size: 1.05rem; /* Was 0.9rem - larger */
+  font-size: 1.05rem;
   border-top: 2px solid #444;
   padding-top: 6px;
   margin-top: 5px;
@@ -413,7 +410,7 @@ button:hover {
   display: inline-block;
 }
 
-/* ===== PAYMENT & NOTES SECTION (SIDE BY SIDE) ===== */
+/* ===== PAYMENT & NOTES ===== */
 .payment-notes-row {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -425,7 +422,7 @@ button:hover {
   font-weight: bold;
   display: block;
   margin-bottom: 2px;
-  font-size: 0.9rem; /* Was 0.8rem - larger */
+  font-size: 0.9rem;
   color: #ffffff;
 }
 
@@ -435,7 +432,7 @@ button:hover {
   border: 2px solid #555;
   padding: 6px 8px;
   font-family: 'Courier Prime', monospace;
-  font-size: 0.95rem; /* Was 0.85rem - larger */
+  font-size: 0.95rem;
   background: #3a3a3a;
   color: #ffffff;
   border-radius: 3px;
@@ -462,7 +459,7 @@ button:hover {
 
 .auth-signature label {
   font-weight: bold;
-  font-size: 0.95rem; /* Was 0.85rem - larger */
+  font-size: 0.95rem;
   color: #ffffff;
 }
 
@@ -478,7 +475,7 @@ button:hover {
 .auth-signature .signature-line label,
 .auth-signature .date-line label {
   min-width: 80px;
-  font-size: 0.9rem; /* Added */
+  font-size: 0.9rem;
 }
 
 .auth-signature input {
@@ -486,7 +483,7 @@ button:hover {
   border-bottom: 2px solid #555;
   padding: 3px 5px;
   font-family: 'Courier Prime', monospace;
-  font-size: 0.95rem; /* Was 0.85rem - larger */
+  font-size: 0.95rem;
   background: transparent;
   color: #ffffff;
   flex: 1;
@@ -519,7 +516,7 @@ button:hover {
 .search-container h3 {
   margin-top: 0;
   margin-bottom: 8px;
-  font-size: 1.0rem; /* Was 0.9rem - larger */
+  font-size: 1.0rem;
   color: #ffffff;
 }
 
@@ -531,7 +528,7 @@ button:hover {
   font-family: 'Courier Prime', monospace;
   resize: vertical;
   vertical-align: middle;
-  font-size: 0.9rem; /* Was 0.85rem - larger */
+  font-size: 0.9rem;
   background: #3a3a3a;
   color: #ffffff;
   font-weight: bold;
@@ -554,13 +551,13 @@ button:hover {
   margin: 8px 0;
   background: #2d2d2d;
   color: #ffffff;
-  font-size: 0.9rem; /* Added */
+  font-size: 0.9rem;
 }
 
 .found-receipt button {
   margin: 3px 3px 0 0;
   padding: 3px 8px;
-  font-size: 0.8rem; /* Was 0.75rem - larger */
+  font-size: 0.8rem;
 }
 
 /* ===== MOBILE RESPONSIVE ===== */
@@ -585,7 +582,7 @@ button:hover {
   }
   
   .logos img {
-    width: 45px; /* Was 40px - larger */
+    width: 45px;
     height: 45px;
   }
   
@@ -615,7 +612,7 @@ button:hover {
   }
   
   th, td {
-    padding: 4px; /* Was 3px - larger */
+    padding: 4px;
   }
   
   .deposit-section input {
@@ -677,7 +674,7 @@ button:hover {
     margin: 0 !important;
     box-shadow: none !important;
     max-width: 100% !important;
-    font-size: 12px !important; /* Print size */
+    font-size: 12px !important;
   }
   
   /* All dividers - black */
@@ -731,7 +728,7 @@ button:hover {
     background: #eee !important;
   }
   
-  /* ===== REMOVE ALL BOXES ON PRINT ===== */
+  /* ===== REMOVE ALL BOXES ON PRINT - SHOW ALL TEXT ===== */
   textarea,
   input,
   .item-qty,
@@ -761,11 +758,14 @@ button:hover {
     print-color-adjust: exact !important;
     padding: 2px 5px !important;
     font-family: 'Courier Prime', monospace !important;
-    font-size: 11pt !important; /* Print size */
+    font-size: 11pt !important;
     font-weight: bold !important;
     text-align: left !important;
     min-height: auto !important;
     height: auto !important;
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+    word-break: break-word !important;
   }
   
   .item-qty,
@@ -774,16 +774,23 @@ button:hover {
     text-align: center !important;
   }
   
-  /* Item description - no border */
+  /* Item description - show ALL content */
   .item-desc {
     border: none !important;
     background: transparent !important;
     color: black !important;
     padding: 2px !important;
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+    word-break: break-word !important;
     font-size: 11pt !important;
+    line-height: 1.5 !important;
   }
   
-  /* ===== DEPOSIT SECTION - CLEAN ===== */
+  /* ===== DEPOSIT SECTION ===== */
   .deposit-section {
     background: transparent !important;
     border: 1px solid black !important;
@@ -814,7 +821,6 @@ button:hover {
     font-size: 11pt !important;
   }
   
-  /* ===== DEPOSIT HIDE IF ZERO ===== */
   .deposit-section.hide-on-print {
     display: none !important;
   }
@@ -824,7 +830,6 @@ button:hover {
     filter: brightness(0) !important;
   }
   
-  /* Borders for totals - clean print */
   .totals .tax {
     border-bottom: 1px solid black !important;
     color: black !important;
@@ -834,7 +839,6 @@ button:hover {
     border-top: 2px solid black !important;
   }
   
-  /* ===== ALIGN TOTALS UNIFORMLY IN PRINT ===== */
   .totals div {
     display: flex !important;
     justify-content: space-between !important;
