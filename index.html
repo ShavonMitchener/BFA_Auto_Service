@@ -26,80 +26,97 @@
   <!-- ===== DIVIDER LINE ===== -->
   <hr class="section-divider">
 
-  <!-- ===== INFO SECTION ===== -->
-  <div class="info">
-    <div class="info-left">
-      <div><label>Invoice No:</label> <input type="text" id="invoiceNo" value="001"></div>
-      <div><label>Customer Name:</label> <textarea id="custName" placeholder="Enter name" rows="1"></textarea></div>
-      <div><label>From:</label> <textarea id="fromName" placeholder="Staff name" rows="1"></textarea></div>
-    </div>
-    <div class="info-right">
-      <div><label>Date:</label> <span id="date"></span></div>
-    </div>
+  <!-- ===== BILL TO SECTION (NEW) ===== -->
+  <div class="section-title">Bill To:</div>
+  <div class="bill-to">
+    <div><label>Customer Name:</label> <textarea id="custName" placeholder="Enter name" rows="1"></textarea></div>
+    <div><label>Phone:</label> <input type="text" id="phone" placeholder="Enter phone" style="width:100%"></div>
+    <div><label>Address:</label> <textarea id="address" placeholder="Enter address" rows="1"></textarea></div>
+    <div><label>City/State/Zip:</label> <textarea id="cityStateZip" placeholder="Enter city, state, zip" rows="1"></textarea></div>
   </div>
 
   <!-- ===== DIVIDER LINE ===== -->
   <hr class="section-divider">
 
-  <!-- ===== VEHICLE INFORMATION SECTION ===== -->
-  <h3>Vehicle Information</h3>
-  <div class="vehicle-info">
-    <div class="vehicle-left">
-      <div><label>Model:</label> <textarea id="vehicleModel" placeholder="Enter model" rows="1"></textarea></div>
-      <div><label>Year:</label> <textarea id="vehicleYear" placeholder="Enter year" rows="1"></textarea></div>
-    </div>
-    <div class="vehicle-right">
-      <div><label>Color:</label> <textarea id="vehicleColor" placeholder="Enter color" rows="1"></textarea></div>
-      <div><label>VIN #:</label> <textarea id="vehicleVin" placeholder="Enter VIN number" rows="1"></textarea></div>
-    </div>
+  <!-- ===== VEHICLE INFORMATION SECTION (EXPANDED) ===== -->
+  <div class="section-title">Vehicle Information</div>
+  <div class="vehicle-info-grid">
+    <div><label>Model:</label> <input type="text" id="vehicleModel" placeholder="Model" style="width:100%"></div>
+    <div><label>License Plate:</label> <input type="text" id="licensePlate" placeholder="License plate" style="width:100%"></div>
+    <div><label>Make:</label> <input type="text" id="vehicleMake" placeholder="Make" style="width:100%"></div>
+    <div><label>VIN:</label> <input type="text" id="vehicleVin" placeholder="VIN" style="width:100%"></div>
+    <div><label>Year:</label> <input type="text" id="vehicleYear" placeholder="Year" style="width:100%"></div>
+    <div><label>Mileage:</label> <input type="text" id="vehicleMileage" placeholder="Mileage" style="width:100%"></div>
+    <div><label>Color:</label> <input type="text" id="vehicleColor" placeholder="Color" style="width:100%"></div>
+    <div><label>RID / Job #:</label> <input type="text" id="jobNumber" placeholder="RID / Job #" style="width:100%"></div>
   </div>
 
   <!-- ===== DIVIDER LINE ===== -->
   <hr class="section-divider">
 
-  <!-- ===== PARTS SECTION ===== -->
-  <h3>Parts</h3>
+  <!-- ===== PARTS SECTION (NOW ITEMS WITH 4 COLUMNS) ===== -->
+  <h3>Items</h3>
   <table class="items" id="partsTable">
     <thead>
       <tr>
         <th>DESCRIPTION</th>
+        <th>QTY</th>
+        <th>RATE</th>
         <th>AMOUNT</th>
         <th></th>
       </tr>
     </thead>
     <tbody id="partsBody"></tbody>
   </table>
-  <button id="addPart">+ Add Part</button>
+  <button id="addPart">+ Add Item</button>
 
   <!-- ===== DIVIDER LINE ===== -->
   <hr class="section-divider">
 
   <!-- ===== TOTALS SECTION ===== -->
   <div class="totals">
-    <div class="parts-total">Parts Total: $<span id="partsTotal">0.00</span></div>
-    <div class="labour-total">
-      Labor Total: $<input type="number" id="labourTotalInput" min="0" step="0.01" value="0.00" class="labour-input">
-    </div>
-    <div class="subtotal">SUBTOTAL: $<span id="subtotal">0.00</span></div>
-    <div class="tax">TAX (7%): $<span id="taxAmount">0.00</span></div>
+    <div class="parts-total">Subtotal: $<span id="partsTotal">0.00</span></div>
     <div class="deposit-section" id="depositSection">
       <label>DEPOSIT: $</label>
       <input type="number" id="depositAmount" min="0" step="0.01" value="0.00">
     </div>
-    <div class="grand">GRAND TOTAL: $<span id="grandTotal">0.00</span></div>
+    <div class="grand">TOTAL DUE: $<span id="grandTotal">0.00</span></div>
+  </div>
+
+  <!-- ===== PAYMENT / NOTES SECTION (NEW) ===== -->
+  <div class="payment-notes">
+    <div class="payment-method">
+      <label>Payment Method:</label>
+      <input type="text" id="paymentMethod" placeholder="Cash, Check, Credit Card" style="width:100%">
+    </div>
+    <div class="notes">
+      <label>Notes:</label>
+      <textarea id="notes" placeholder="Additional notes" rows="2"></textarea>
+    </div>
+  </div>
+
+  <!-- ===== THANK YOU (NEW) ===== -->
+  <div class="thank-you">
+    Thank you for your business!
+  </div>
+
+  <!-- ===== AUTHORIZATION SECTION (NEW) ===== -->
+  <div class="authorization">
+    <div class="section-title">AUTHORIZED BY</div>
+    <div class="signature-line">
+      <label>Signature:</label>
+      <input type="text" id="signedBy" placeholder="Enter signature" style="width:70%">
+    </div>
+    <div class="date-line">
+      <label>Date:</label>
+      <input type="date" id="authDate">
+    </div>
   </div>
 
   <!-- ===== DIVIDER LINE ===== -->
   <hr class="section-divider">
 
-  <div class="sign">
-    <label>Signed by:</label>
-    <textarea id="signedBy" placeholder="Enter name" rows="1"></textarea>
-  </div>
-
-  <!-- ===== DIVIDER LINE ===== -->
-  <hr class="section-divider">
-
+  <!-- ===== ACTIONS ===== -->
   <div class="actions">
     <button id="saveBtn">Save Receipt</button>
     <button id="printBtn">Print Invoice</button>
@@ -107,9 +124,11 @@
     <button id="resetBtn">Reset Invoice No.</button>
     <button id="exportBtn">📁 Export Receipts</button>
     <button id="importBtn">📂 Import Receipts</button>
+    <button id="clearAllBtn" style="background:#ff4444; color:white;">🗑️ Clear All Receipts</button>
   </div>
 </div>
 
+<!-- ===== SEARCH CONTAINER ===== -->
 <div class="search-container">
   <h3>Search Old Receipts</h3>
   <textarea id="searchInput" placeholder="Enter invoice number or customer name" rows="1"></textarea>
