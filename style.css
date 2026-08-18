@@ -14,7 +14,7 @@ body {
   background: #2d2d2d;
   padding: 20px;
   margin: auto;
-  max-width: 750px;
+  max-width: 900px;
   border: 1px solid #444;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   color: #ffffff;
@@ -72,86 +72,115 @@ body {
   display: block;
 }
 
-/* ===== INFO SECTION ===== */
-.info {
+/* ===== INVOICE TOP (Invoice #, Date, Due Date) ===== */
+.invoice-top {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px 30px;
-  font-size: 0.85rem;
-  margin-bottom: 5px;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 10px;
 }
 
-.info label {
+.invoice-field {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.invoice-field label {
   font-weight: bold;
-  display: block;
-  margin-bottom: 2px;
+  font-size: 0.85rem;
   color: #ffffff;
+  white-space: nowrap;
 }
 
-.info textarea, .info input {
-  width: 100%;
-  border: 2px solid #555;
-  padding: 6px 8px;
+.invoice-field input,
+.invoice-field span {
   font-size: 0.85rem;
-  resize: vertical;
   font-family: 'Courier Prime', monospace;
   background: #3a3a3a;
   color: #ffffff;
-  font-weight: bold;
-  border-radius: 3px;
-}
-
-.info textarea:focus, .info input:focus {
-  outline: none;
-  background: #4a4a4a;
-  border-color: #777;
-}
-
-.info-left {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.info-right {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-#date {
-  font-weight: bold;
-  color: #ffffff;
-  padding: 6px 8px;
-  display: block;
-  background: #3a3a3a;
   border: 2px solid #555;
+  padding: 6px 8px;
   border-radius: 3px;
+  flex: 1;
+}
+
+.invoice-field input {
+  width: 100%;
+}
+
+.invoice-field span {
+  display: block;
   min-height: 35px;
 }
 
-/* ===== VEHICLE INFORMATION ===== */
-.vehicle-info {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px 30px;
-  font-size: 0.85rem;
-  margin-bottom: 5px;
-}
-
-.vehicle-info label {
+/* ===== SECTION TITLE BOLD ===== */
+.section-title-bold {
   font-weight: bold;
-  display: block;
-  margin-bottom: 2px;
+  font-size: 0.9rem;
+  margin-top: 8px;
+  margin-bottom: 8px;
   color: #ffffff;
 }
 
-.vehicle-info textarea {
+/* ===== BILL TO ===== */
+.bill-to {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.bill-to label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 2px;
+  font-size: 0.8rem;
+  color: #ffffff;
+}
+
+.bill-to textarea,
+.bill-to input {
   width: 100%;
   border: 2px solid #555;
   padding: 6px 8px;
   font-size: 0.85rem;
+  font-family: 'Courier Prime', monospace;
   resize: vertical;
+  background: #3a3a3a;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 3px;
+}
+
+.bill-to textarea:focus,
+.bill-to input:focus {
+  outline: none;
+  background: #4a4a4a;
+  border-color: #777;
+}
+
+/* ===== VEHICLE INFORMATION ===== */
+.vehicle-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.vehicle-info-grid label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 2px;
+  font-size: 0.75rem;
+  color: #ffffff;
+}
+
+.vehicle-info-grid input {
+  width: 100%;
+  border: 2px solid #555;
+  padding: 6px 8px;
+  font-size: 0.8rem;
   font-family: 'Courier Prime', monospace;
   background: #3a3a3a;
   color: #ffffff;
@@ -159,36 +188,13 @@ body {
   border-radius: 3px;
 }
 
-.vehicle-info textarea:focus {
+.vehicle-info-grid input:focus {
   outline: none;
   background: #4a4a4a;
   border-color: #777;
 }
 
-.vehicle-left {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.vehicle-right {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-/* ===== INVOICE NUMBER ===== */
-#invoiceNo {
-  background: #3a3a3a !important;
-  color: #ffffff !important;
-  font-weight: bold !important;
-  border: 2px solid #555 !important;
-  padding: 6px 8px !important;
-  font-family: 'Courier Prime', monospace !important;
-  font-size: 0.85rem !important;
-  border-radius: 3px !important;
-}
-
+/* ===== ITEMS TABLE ===== */
 h3 {
   margin-top: 5px;
   margin-bottom: 8px;
@@ -202,7 +208,8 @@ table {
   margin: 5px 0;
 }
 
-th, td {
+th,
+td {
   border: 2px solid #444;
   padding: 4px;
   vertical-align: top;
@@ -214,24 +221,33 @@ th {
   color: #ffffff;
 }
 
-/* ===== PARTS TABLE ===== */
 #partsTable th:first-child,
 #partsTable td:first-child {
-  width: 70%;
+  width: 45%;
 }
 
 #partsTable th:nth-child(2),
 #partsTable td:nth-child(2) {
-  width: 15%;
+  width: 12%;
+}
+
+#partsTable th:nth-child(3),
+#partsTable td:nth-child(3) {
+  width: 18%;
+}
+
+#partsTable th:nth-child(4),
+#partsTable td:nth-child(4) {
+  width: 18%;
 }
 
 #partsTable th:last-child,
 #partsTable td:last-child {
-  width: 15%;
+  width: 7%;
 }
 
-/* Description textarea - bigger and can hold more text */
-.part-desc {
+/* Item description textarea */
+.item-desc {
   width: 100%;
   border: none;
   padding: 4px;
@@ -247,8 +263,10 @@ th {
   min-height: 30px;
 }
 
-/* Amount input - CENTERED */
-.part-amt {
+/* Item quantity, rate, amount inputs */
+.item-qty,
+.item-rate,
+.item-amt {
   width: 90%;
   border: none;
   padding: 3px;
@@ -263,6 +281,11 @@ th {
   margin: 0 auto;
 }
 
+.item-amt {
+  background: #2a2a2a;
+  color: #ffcc00;
+}
+
 .delete-btn {
   background: #ff4444;
   color: white;
@@ -275,14 +298,18 @@ th {
   text-align: center;
   line-height: 1;
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .delete-btn:hover {
   background: #cc0000;
 }
 
-textarea:focus, input:focus {
+textarea:focus,
+input:focus {
   outline: none;
   background: #4a4a4a;
   color: #ffffff;
@@ -316,7 +343,6 @@ button:hover {
 .totals div {
   margin-bottom: 3px;
   font-size: 0.85rem;
-  white-space: nowrap;
   color: #ffffff;
   display: flex;
   justify-content: space-between;
@@ -324,62 +350,7 @@ button:hover {
   gap: 20px;
 }
 
-/* Label styling - fixed width so amounts align */
-.totals .parts-total {
-  color: #ffffff;
-}
-
 .totals .parts-total span {
-  min-width: 100px;
-  text-align: right;
-  display: inline-block;
-}
-
-.totals .labour-total {
-  color: #ffffff;
-}
-
-.totals .labour-total input {
-  min-width: 100px;
-  width: 100px;
-  background: transparent !important;
-  color: #ffffff !important;
-  font-weight: bold !important;
-  border: none !important;
-  border-bottom: 1px solid #555 !important;
-  padding: 2px 0 !important;
-  text-align: right !important;
-  font-family: 'Courier Prime', monospace !important;
-  font-size: 0.85rem !important;
-  outline: none !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  display: inline-block !important;
-}
-
-.totals .subtotal {
-  font-weight: bold;
-  border-bottom: 1px solid #444;
-  padding-bottom: 3px;
-  margin-bottom: 5px;
-  color: #ffffff;
-}
-
-.totals .subtotal span {
-  min-width: 100px;
-  text-align: right;
-  display: inline-block;
-}
-
-.totals .tax {
-  font-weight: bold;
-  color: #ffaa00;
-  border-bottom: 1px solid #444;
-  padding-bottom: 3px;
-  margin-bottom: 5px;
-}
-
-.totals .tax span {
   min-width: 100px;
   text-align: right;
   display: inline-block;
@@ -390,7 +361,6 @@ button:hover {
   padding: 5px 10px;
   background: #3a2a2a;
   border: 1px solid #883333;
-  white-space: nowrap;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -410,7 +380,6 @@ button:hover {
   border: 1px solid #883333;
   font-family: 'Courier Prime', monospace;
   text-align: right;
-  display: inline-block;
   background: #3a3a3a;
   color: #ffffff;
   font-weight: bold;
@@ -424,7 +393,6 @@ button:hover {
   padding-top: 6px;
   margin-top: 5px;
   color: #ffffff;
-  white-space: nowrap;
 }
 
 .totals .grand span {
@@ -433,35 +401,109 @@ button:hover {
   display: inline-block;
 }
 
-/* ===== SIGN SECTION ===== */
-.sign {
-  margin-top: 5px;
+/* ===== PAYMENT & NOTES SECTION ===== */
+.payment-notes-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 15px;
+  margin-top: 15px;
 }
 
-.sign label {
+.payment-notes-row label {
   font-weight: bold;
-  font-size: 0.85rem;
   display: block;
-  margin-bottom: 3px;
+  margin-bottom: 2px;
+  font-size: 0.8rem;
   color: #ffffff;
 }
 
-.sign textarea {
-  width: 60%;
-  padding: 6px 8px;
+.payment-notes-row textarea,
+.payment-notes-row input {
+  width: 100%;
   border: 2px solid #555;
+  padding: 6px 8px;
   font-family: 'Courier Prime', monospace;
-  resize: vertical;
   font-size: 0.85rem;
   background: #3a3a3a;
   color: #ffffff;
+  border-radius: 3px;
+  resize: vertical;
+}
+
+.payment-notes-row textarea:focus,
+.payment-notes-row input:focus {
+  outline: none;
+  background: #4a4a4a;
+  border-color: #777;
+}
+
+/* ===== THANK YOU ===== */
+.thank-you {
+  text-align: center;
   font-weight: bold;
+  font-size: 1rem;
+  margin: 15px 0 10px 0;
+  padding: 5px;
+  border-top: 1px solid #444;
+  border-bottom: 1px solid #444;
+  color: #ffffff;
+}
+
+/* ===== AUTHORIZATION ===== */
+.auth-row {
+  margin-top: 15px;
+}
+
+.auth-signature {
+  border: 2px solid #555;
+  padding: 15px;
   border-radius: 3px;
 }
 
+.auth-signature label {
+  font-weight: bold;
+  font-size: 0.85rem;
+  color: #ffffff;
+}
+
+.auth-signature .signature-line,
+.auth-signature .date-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.auth-signature .signature-line label,
+.auth-signature .date-line label {
+  min-width: 80px;
+}
+
+.auth-signature input {
+  border: none;
+  border-bottom: 2px solid #555;
+  padding: 3px 5px;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.85rem;
+  background: transparent;
+  color: #ffffff;
+  flex: 1;
+}
+
+.auth-signature input:focus {
+  outline: none;
+  border-bottom-color: #777;
+}
+
+/* ===== ACTIONS ===== */
 .actions {
   text-align: center;
   margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
 }
 
 /* ===== SEARCH CONTAINER ===== */
@@ -469,7 +511,7 @@ button:hover {
   background: #2d2d2d;
   margin: 20px auto;
   padding: 15px;
-  max-width: 750px;
+  max-width: 900px;
   border: 1px solid #444;
 }
 
@@ -521,13 +563,18 @@ button:hover {
 
 /* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 600px) {
-  .info {
+  .invoice-top {
     grid-template-columns: 1fr;
     gap: 6px;
   }
   
-  .vehicle-info {
+  .bill-to {
     grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  
+  .vehicle-info-grid {
+    grid-template-columns: 1fr 1fr;
     gap: 6px;
   }
   
@@ -538,6 +585,11 @@ button:hover {
   .logos img {
     width: 40px;
     height: 40px;
+  }
+  
+  .payment-notes-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
   
   .actions {
@@ -560,10 +612,6 @@ button:hover {
     width: 100%;
   }
   
-  .sign textarea {
-    width: 100%;
-  }
-  
   th, td {
     padding: 3px;
   }
@@ -580,18 +628,19 @@ button:hover {
     white-space: normal;
   }
   
-  .totals .labour-total {
-    flex-wrap: wrap;
-    justify-content: flex-end;
-  }
-  
   .deposit-section {
     white-space: normal;
-    display: block;
+    display: flex;
   }
   
   .totals .grand {
     white-space: normal;
+  }
+  
+  .auth-signature .signature-line,
+  .auth-signature .date-line {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 
@@ -600,16 +649,13 @@ button:hover {
   @page {
     margin: 0.5in;
     size: A4;
-    @top-center {
-      content: none;
-    }
-    @bottom-center {
-      content: none;
-    }
   }
   
   /* Hide buttons and action elements */
-  button, .actions, .search-container, .delete-btn {
+  button,
+  .actions,
+  .search-container,
+  .delete-btn {
     display: none !important;
   }
   
@@ -620,13 +666,15 @@ button:hover {
   }
   
   /* ===== RESET EVERYTHING TO BLACK & WHITE ===== */
-  body, .invoice-container {
+  body,
+  .invoice-container {
     background: white !important;
     color: black !important;
     border: none !important;
     padding: 0 !important;
     margin: 0 !important;
     box-shadow: none !important;
+    max-width: 100% !important;
   }
   
   /* All dividers - black */
@@ -635,36 +683,43 @@ button:hover {
   }
   
   /* All text - black */
-  .header h2, 
-  .header p, 
-  .info label, 
-  .info textarea, 
-  .info input,
-  .vehicle-info label,
-  .vehicle-info textarea,
+  .header h2,
+  .header p,
+  .invoice-field label,
+  .invoice-field input,
+  .invoice-field span,
+  .section-title-bold,
+  .bill-to label,
+  .bill-to textarea,
+  .bill-to input,
+  .vehicle-info-grid label,
+  .vehicle-info-grid input,
   h3,
   .totals div,
   .totals .parts-total,
-  .totals .labour-total,
-  .totals .subtotal,
-  .totals .tax,
   .totals .grand,
-  .sign label,
-  .sign textarea,
+  .payment-notes-row label,
+  .payment-notes-row textarea,
+  .payment-notes-row input,
+  .thank-you,
+  .auth-signature label,
+  .auth-signature input,
+  .item-desc,
+  .item-qty,
+  .item-rate,
+  .item-amt,
   #date,
-  .part-desc,
-  .part-amt,
   #invoiceNo,
-  .totals .labour-total input,
   .totals .parts-total span,
-  .totals .subtotal span,
-  .totals .tax span,
-  .totals .grand span {
+  .totals .grand span,
+  .deposit-section label,
+  .deposit-section input {
     color: black !important;
   }
   
   /* Tables */
-  th, td {
+  th,
+  td {
     border: 1px solid black !important;
     color: black !important;
   }
@@ -674,18 +729,23 @@ button:hover {
   }
   
   /* ===== REMOVE ALL BOXES ON PRINT ===== */
-  textarea, 
+  textarea,
   input,
-  .part-amt,
+  .item-qty,
+  .item-rate,
+  .item-amt,
   #invoiceNo,
   .deposit-section input,
-  .totals .labour-total input,
-  .info textarea,
-  .info input,
-  .vehicle-info textarea,
-  .sign textarea,
+  .bill-to textarea,
+  .bill-to input,
+  .vehicle-info-grid input,
   .search-container textarea,
-  #date {
+  .payment-notes-row textarea,
+  .payment-notes-row input,
+  .auth-signature input,
+  #date,
+  .invoice-field input,
+  .invoice-field span {
     border: none !important;
     border-bottom: 1px solid #999 !important;
     background: transparent !important;
@@ -705,36 +765,18 @@ button:hover {
     height: auto !important;
   }
   
-  /* ===== FIX DATE FIELD ===== */
-  #date {
-    border: none !important;
-    border-bottom: 1px solid #999 !important;
-    background: transparent !important;
-    color: black !important;
-    padding: 2px 5px !important;
-    display: inline-block !important;
-    min-height: auto !important;
+  .item-qty,
+  .item-rate,
+  .item-amt {
+    text-align: center !important;
   }
   
-  /* Part description - no border */
-  .part-desc {
+  /* Item description - no border */
+  .item-desc {
     border: none !important;
     background: transparent !important;
     color: black !important;
     padding: 2px !important;
-  }
-  
-  /* ===== LABOR TOTAL INPUT ===== */
-  .totals .labour-total input {
-    border: none !important;
-    border-bottom: 1px solid #999 !important;
-    background: transparent !important;
-    color: black !important;
-    text-align: right !important;
-    min-width: 100px !important;
-    width: 100px !important;
-    display: inline-block !important;
-    padding: 2px 5px !important;
   }
   
   /* ===== DEPOSIT SECTION - CLEAN ===== */
@@ -778,15 +820,6 @@ button:hover {
   }
   
   /* Borders for totals - clean print */
-  .totals .subtotal {
-    border-bottom: 1px solid black !important;
-  }
-  
-  .totals .tax {
-    border-bottom: 1px solid black !important;
-    color: black !important;
-  }
-  
   .totals .grand {
     border-top: 2px solid black !important;
   }
@@ -800,57 +833,4 @@ button:hover {
     white-space: nowrap !important;
   }
   
-  .totals .parts-total span,
-  .totals .subtotal span,
-  .totals .tax span,
-  .totals .grand span {
-    min-width: 100px !important;
-    text-align: right !important;
-    display: inline-block !important;
-  }
-  
-  /* ===== FIX INFO SECTION LAYOUT ===== */
-  .info {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 8px 30px !important;
-  }
-  
-  .info-left, .info-right {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 6px !important;
-  }
-  
-  /* ===== FIX VEHICLE SECTION LAYOUT ===== */
-  .vehicle-info {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 8px 30px !important;
-  }
-  
-  .vehicle-left, .vehicle-right {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 6px !important;
-  }
-  
-  /* ===== FIX SIGN SECTION ===== */
-  .sign textarea {
-    width: 60% !important;
-    border: none !important;
-    border-bottom: 1px solid #999 !important;
-    background: transparent !important;
-    color: black !important;
-    padding: 2px 5px !important;
-  }
-  
-  /* ===== FIX PART AMOUNT ON PRINT ===== */
-  .part-amt {
-    text-align: center !important;
-    border: none !important;
-    border-bottom: 1px solid #999 !important;
-    background: transparent !important;
-    color: black !important;
-  }
-}
+  .
